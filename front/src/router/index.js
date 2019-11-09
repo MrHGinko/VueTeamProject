@@ -1,0 +1,25 @@
+import Vue from "vue";
+import VueRouter from "vue-router";
+// 引入路由模块
+import foodRouter from './food-router';
+
+Vue.use(VueRouter);
+
+const routes = [
+
+        {
+                path: "/",
+                name: "home",
+                components: { default: () =>import(/* webpackChunkName: "about" */ "../views/Home.vue") }
+	},
+	// 添加路由模块
+	foodRouter,
+];
+
+const router = new VueRouter({
+        mode: "history",
+        base: process.env.BASE_URL,
+        routes
+});
+
+export default router;
