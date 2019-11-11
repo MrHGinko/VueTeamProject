@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-	<router-view></router-view>
+  <div class="cinema">
+      Hellow Cinema
   </div>
 </template>
 

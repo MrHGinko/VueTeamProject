@@ -1,25 +1,35 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // 引入路由模块
-import foodRouter from './food-router';
+import Movie from './movie'
+import Mine from './mine'
+import Cinema from './cinema'
 
 Vue.use(VueRouter);
 
 const routes = [
-
-        {
-                path: "/",
-                name: "home",
-                components: { default: () =>import(/* webpackChunkName: "about" */ "../views/Home.vue") }
-	},
-	// 添加路由模块
-	foodRouter,
+    // {
+    //         path: "/",
+    //         name: "movie",
+    //         components: {
+    //             default: () =>
+    //                 import ( /* webpackChunkName: "about" */ "../views/Movie")
+    //         }
+    //     },
+    {
+        path: '/',
+        redirect: '/movie'
+    },
+    Movie,
+    Mine,
+    Cinema,
+    // 添加路由模块
 ];
 
 const router = new VueRouter({
-        mode: "history",
-        base: process.env.BASE_URL,
-        routes
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes
 });
 
 export default router;
