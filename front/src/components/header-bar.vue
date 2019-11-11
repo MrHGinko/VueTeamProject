@@ -5,7 +5,7 @@
 	
 		<input class="topIpt" type="text" :value="title">
 	
-		<span class="shareBtn"> <span><van-icon name="share" /></span> </span>	
+		<span class="shareBtn"> <span><van-icon name="share" @click='logout()'/></span> </span>	
 	</div>
 	
 </template>
@@ -17,7 +17,13 @@ export default {
 		title: {
 			type: String,
 			default: ''
-		}
+		},
+		logout: {
+			type: Function,
+			default: function() {
+				console.log('点击了');
+			}
+		} 
 	},
 	data() {
 		return {

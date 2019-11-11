@@ -1,16 +1,28 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import food from "./food";
+import mine from "./mine"
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
         state: {
-                username: "?hello"
-        },
-        mutations: {},
-        actions: {},
+		isLogin: false,
+		username: null,
+	},
+        mutations: {
+		setLogin(state, flag) {
+			state.isLogin = flag;
+		},
+		setUsername(state, value) {
+			state.username = value;
+		}
+	},
+        actions: {
+		
+	},
         modules: {
-                food
+		food,
+		mine
         }
 });

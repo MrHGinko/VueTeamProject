@@ -20,7 +20,7 @@ server.use(
                 secret: "hello world",
                 name: "login_session",
                 cookie: {
-                        maxAge: 1000 * 60 * 60 * 24 * 30 // 1 week
+                        maxAge: 1000 * 5//1000 * 60 * 60 * 24 * 30 // 1 week
                 },
                 store: store,
                 resave: true,
