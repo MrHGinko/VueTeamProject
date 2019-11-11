@@ -1,8 +1,8 @@
 import { Icon, Toast } from "vant";
 import ScrollBox from "./scroll-box.vue";
-import AppTabBar from "../components/tab-bar"
-import AppScroll from "../components/app-scroll"
-import AppHeader from "../components/app-header"
+import AppTabBar from "../components/tab-bar/index"
+import AppScroll from "../components/app-scroll/index"
+import AppHeader from "../components/app-header/index"
 
 
 export default {

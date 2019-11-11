@@ -1,6 +1,7 @@
 <template>
   <div class="movie">
     	  <app-header  class="mymovie" title="猫眼电影"></app-header>
+        <router-view></router-view>
   </div>
 </template>
 

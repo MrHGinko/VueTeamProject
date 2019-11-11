@@ -1,10 +1,8 @@
 <template>
-  <div class="mine">
-    
-      	  <app-header title="我的"></app-header>
+  <div class="city">
+      <h1>City</h1>
   </div>
 </template>
-
 <script>
 export default {
 
