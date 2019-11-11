@@ -1,6 +1,6 @@
 <template>
   <div class="mine">
-      Hellow Mine
+      	  <app-header title="我的"></app-header>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="movie">
-      Hellow Movie
+    	  <app-header  class="mymovie" title="猫眼电影"></app-header>
   </div>
 </template>
 
@@ -10,6 +10,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .mymovie{
+        background:#f03d37;
+        color: #fff;
+    }
 </style>
+

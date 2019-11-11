@@ -1,6 +1,6 @@
 <template>
   <div class="cinema">
-      Hellow Cinema
+      	  <app-header title="影院"></app-header>
   </div>
 </template>
 
