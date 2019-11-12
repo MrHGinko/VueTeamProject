@@ -32,8 +32,11 @@ const actions = {
 	async userLogoutAction(context) {
 		let result = await Http.get(api.USER_LOGOUT_API,{});
 		return result.data;
+	},
+	async checkLogin(context) {
+		let result = await Http.get(api.USER_CHECK_API, {});
+		return result.data;
 	}
-	
 };
 
 export default {

@@ -23,7 +23,6 @@ router.post("/regiester", (req, res) => {
 // 登录
 router.post("/login", (req, res) => {
 	const { tel, password } = req.body;
-	console.log("tel + value: "+ tel , password);
         //密码登录
         User.findByTelAndPsd(tel, password)
                 .then(result => {

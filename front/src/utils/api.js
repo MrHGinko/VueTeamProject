@@ -29,6 +29,18 @@ const USER_LOGOUT_API = '/api/user/logout';
 
 //--------------------------
 
+// order api
+// 订单列表
+const ORDER_LIST_API = '/api/order/orderlist';
+
+// 创建订单 methods: post,
+// params: {orderID: String, orderName: String, orderType: String, price: Number}
+const ORDER_ADD_API = '/api/order/newOrder';
+
+// 修改订单状态 methods: post
+// 
+const ORDER_CHANGE_API = '/api/order/change_status';
+
 export default {
 	FOOD_API,
 	FOOD_FIND_LIST_API,
@@ -38,4 +50,7 @@ export default {
 	USER_REGIESTER_API,
 	USER_CHECK_API,
 	USER_LOGOUT_API,
+	ORDER_LIST_API,
+	ORDER_ADD_API,
+	ORDER_CHANGE_API
 }

@@ -25,7 +25,8 @@ export default {
 			hasAnimate: true
 		}
 	},
-	created() {
+	async created() {
+
 		// 监听展示登录组件
 		this.$center.$on('toggleLogin', (value) => {
 			if (this.showCom && value) {
@@ -46,7 +47,14 @@ export default {
 			this.showCom = value;
 			this.comName = 'Regiester';
 		})
+
+		let result = await this.$store.dispatch('mine/checkLogin');
+		if(result.code === 0) {
+			this.$store.commit('setLogin', true);
+			this.$store.commit('setUsername', localStorage.getItem('username'));
+		}
 	}
+	
 }
 </script>
 

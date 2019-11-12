@@ -20,7 +20,7 @@ server.use(
                 secret: "hello world",
                 name: "login_session",
                 cookie: {
-                        maxAge: 1000 * 5//1000 * 60 * 60 * 24 * 30 // 1 week
+                        maxAge: 1000 * 60 * 60 * 24  // 1 Day
                 },
                 store: store,
                 resave: true,
@@ -32,6 +32,7 @@ server.use(express.urlencoded({ urlencoded: false }));
 server.use(express.json());
 
 server.use("/api/user", require("./routers/userRouter"));
+server.use("/api/order", require("./routers/orderRouter"));
 server.use("/api/food", require("./routers/foodRouter"));
 
 // 以上 添加数据请求
