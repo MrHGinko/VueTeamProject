@@ -27,6 +27,15 @@ const USER_CHECK_API = '/api/user/check_login';
 // 无
 const USER_LOGOUT_API = '/api/user/logout';
 
+
+// 获取用户其他数据
+// 无
+const USER_GETINFO_API = '/api/userinfo/get_info';
+
+// 更改用户数据  methods: post
+//  params: { options: {nickName: String, balance: Number, point: Number} }
+const USER_CHANGEINFO_API = '/api/userinfo/change_info';
+
 //--------------------------
 
 // order api
@@ -50,6 +59,8 @@ export default {
 	USER_REGIESTER_API,
 	USER_CHECK_API,
 	USER_LOGOUT_API,
+	USER_GETINFO_API,
+	USER_CHANGEINFO_API,
 	ORDER_LIST_API,
 	ORDER_ADD_API,
 	ORDER_CHANGE_API

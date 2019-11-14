@@ -7,7 +7,6 @@ router.post('/newOrder', (req,res) => {
 	res.json({
 		code: 0,
 		message: 'OK',
-		data: result
 	})
 })
 
@@ -26,7 +25,6 @@ router.post('/change_status', async (req, res) => {
 	res.json({
 		code: 0,
 		message: 'OK',
-		data: result
 	})
 })
 

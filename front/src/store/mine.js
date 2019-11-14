@@ -2,15 +2,13 @@ import api from "../utils/api";
 import Http from "../utils/Http";
 
 const state = {
-        username: null
+
 };
 
 const getters = {};
 
 const mutations = {
-        setUsername(state, value) {
-		state.username = value;
-        }
+
 };
 
 const actions = {
@@ -35,6 +33,14 @@ const actions = {
 	},
 	async checkLogin(context) {
 		let result = await Http.get(api.USER_CHECK_API, {});
+		return result.data;
+	},
+	async userGetInfo(context) {
+		let result = await Http.get(api.USER_GETINFO_API,{});
+		return result.data;
+	},
+	async userChangeInfo(context, options) {
+		let result = await Http.post(api.USER_CHANGEINFO_API,options);
 		return result.data;
 	}
 };

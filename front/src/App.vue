@@ -1,8 +1,8 @@
 <template>
 	<div id="app">
-	
+
 		<router-view></router-view>
-	
+
 		<transition :enter-active-class="hasAnimate?'slideInDown':''" leave-active-class="slideOutDown">
 			<component v-if="showCom" :is="comName" />
 		</transition>

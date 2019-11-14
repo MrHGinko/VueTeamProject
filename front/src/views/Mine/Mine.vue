@@ -6,7 +6,7 @@
 				<span class="userimg"></span>
 				<div class="u-info">
 					<span class="u-name">{{name}}</span> <br>
-					<span class="u-detail">个人信息 > </span>
+					<span class="u-detail" @click="tcin()">个人信息 > </span>
 				</div>
 			</div>
 			<div class="userinfo" v-else>
@@ -14,13 +14,23 @@
 			</div>
 
 			<div class="m-box">
-				<div class="m-inc border-bottom" @click="toOrder()">
+				<div class="m-inc border-bottom" @click="">
 					<div> <span class="m-l-icon"> <van-icon name="orders-o" /> </span>
-						我的订单 
+						余额
+					<span class="m-r-icon"> ￥ {{userInfo.balance}}<van-icon name="arrow" /> </span> </div>
+				</div><div class="m-inc border-bottom" @click="">
+					<div> <span class="m-l-icon"> <van-icon name="orders-o" /> </span>
+						积分
+					<span class="m-r-icon"> {{userInfo.point}}<van-icon name="arrow" />  </span> </div>
+				</div>
+				<div class="m-inc border-bottom" @click="">
+					<div> <span class="m-l-icon"> <van-icon name="orders-o" /> </span>
+						优惠券
 					<span class="m-r-icon"> <van-icon name="arrow" /></span> </div>
-				</div><div class="m-inc border-bottom" @click="toOrder()">
+				</div>
+				<div class="m-inc border-bottom" @click="">
 					<div> <span class="m-l-icon"> <van-icon name="orders-o" /> </span>
-						我的订单 
+						卡包
 					<span class="m-r-icon"> <van-icon name="arrow" /></span> </div>
 				</div>
 			</div>
@@ -46,7 +56,10 @@
 export default {
 	data() {
 		return {
-			
+			count : 1,
+			userInfo: {
+
+			}
 		}
 	},
 	computed: {
@@ -58,6 +71,18 @@ export default {
 		}
 	},
 	methods: {
+		async tcin() {
+			
+			let result = await this.$store.dispatch('mine/userChangeInfo',{
+				nickName: this.count++,
+				balance: 8,
+				point: 88,
+			})
+			let ts = await this.$store.dispatch('mine/userGetInfo');
+			this.userInfo = ts.data[0];
+			this.$store.commit('setUsername', this.userInfo.nickName);
+			console.log(result);
+		}, //test OK
 		toOrder() {
 			if(this.$store.state.isLogin) {
 				this.$router.push('/order');
@@ -74,12 +99,16 @@ export default {
 				this.$store.commit('setUsername', null);
 			}
 		},
-		toLogin() {
+		toLogin() { 
 			this.$center.$emit('toggleLogin', true);
 		}
 	},
-	created() {
+	async created() {
 		
+		let result = await this.$store.dispatch('mine/userGetInfo');
+		this.userInfo = result.data[0];
+		this.$store.commit('setUsername', this.userInfo.nickName);
+		console.log(this.userInfo);
 	}
 }
 </script>
@@ -104,8 +133,11 @@ export default {
 			font-size: 16px;
 		}
 		.m-r-icon {
-			vertical-align: middle;
 			float: right;
+			i {
+				padding-left: 8px;
+				vertical-align: middle;
+			}
 		}
 	}
 }

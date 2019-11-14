@@ -15,6 +15,7 @@ const mutations = {
 	setOrderList(state, list) {
 		state.orderList = list;
 	}
+	
 };
 
 const actions = {
@@ -28,7 +29,7 @@ const actions = {
 		let result = await Http.post(api.ORDER_ADD_API, {
 			orderID: rest[0][0],
 			orderName: rest[0][1],
-			orderType: rest[0][2],
+			orderType: rest[0][2], 
 			price: rest[0][3]
 		})
 		console.log(rest[0]);

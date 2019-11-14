@@ -7,10 +7,13 @@ router.post("/regiester", (req, res) => {
         const { tel, password } = req.body;
         User.add(tel, password)
                 .then(userInfo => {
-                        res.json({
-                                code: 0,
-                                message: "ok"
-                        });
+			UserInfo.add(tel, tel)
+			.then(()=>{
+				res.json({
+					code: 0,
+					message: "ok"
+				});
+			})
                 })
                 .catch(error => {
                         res.json({
@@ -43,6 +46,7 @@ router.post("/login", (req, res) => {
                         res.json({ code: -2, message: error.message });
                 });
 });
+
 
 // 检查登录是否过期
 router.get("/check_login", (req, res) => {

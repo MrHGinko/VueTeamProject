@@ -2,22 +2,23 @@
 <div id="Order">
 	<header-bar title="订单"></header-bar>
 	<scroll-box class="content">
-		<p class="a-order border-bottom">我的订单 <span class="o-btn">全部订单 <van-icon class="o-ic" name="arrow"></van-icon></span></p>
+		<p class="a-order border-bottom" @click="allOrder()">我的订单 <span class="o-btn">全部订单 <van-icon class="o-ic" name="arrow"></van-icon></span></p>
 		<div class="s-o-list">
-			<div v-for="(item,index) in selectList" :key="index">
-				<router-link  :to="item.path">
+			<div v-for="(item,index) in selectList" :key="index" :class="{active: index === status}">
+				<div @click="changeStatus(item.status)">
 					<span class="s-icon"> <van-icon :name="item.icon" /> </span> <br>
 					<span>{{item.title}}</span>
-				</router-link>
+				</div>
 			</div>
 		</div>
 		<p class="last-o">最近订单</p>
 
 		<!-- v-for 展示最近订单  -->
 		<div class="order-list">
-			<button @click="tao()" >新增</button>
-			<button @click="tfl()" >查询</button>
-			<button @click="tcs()" >修改状态</button>
+			<orderItem v-for="item in showList" 
+			:order="item" 
+			:key="item._id"
+			@change="HandleChange"></orderItem>
 		</div>
 	
 	</scroll-box>
@@ -34,37 +35,46 @@ export default {
 	data() {
 		return {
 			selectList: [
-				{icon: 'peer-pay', title: '待付款', path: '#'},
-				{icon: 'play', title: '待使用', path: '#'},
-				{icon: 'comment-o', title: '待评价', path: '#'},
-				{icon: 'replay', title: '售后', path: '#'},
+				{icon: 'peer-pay', title: '待付款', status: 0},
+				{icon: 'play', title: '待使用', status: 1},
+				{icon: 'comment-o', title: '待评价', status: 2},
+				{icon: 'replay', title: '售后', status: 3},
 			],
 			orderList: [],
+			status: 'all',
+		}
+	},
+	computed: {
+		showList() {
+			if(this.status === 'all') return this.orderList;
+			else return this.orderList.filter(item=>item.status === this.status);	
 		}
 	},
 	methods: {
-		async tfl() {
-			let result = await this.$store.dispatch('order/getOrderList');
-			console.log(result);
+		changeStatus(flag) {
+			this.status = flag;
+		},
+		allOrder() {
+			this.status = 'all';
 		},  // test OK
-		async tao() {
-			let result = await this.$store.dispatch('order/addOrder', [
-				'F98', 'Loving Vincent', 'film', 98.02
-			])
-		},  // test OK 5dcaa8995b939504b8ec5ebd
-		async tcs(ID, status) {
+		async HandleChange(id, status) {
 			let order = {
-				id : "5dcaa8995b939504b8ec5ebd",
-				change: 99
+				id,
+				change: status,
 			};
 			let result = await this.$store.dispatch('order/changeStatus', order);
-			console.log(result);
+			if(result.data.code === 0) {
+				let result = await this.$store.dispatch('order/getOrderList');
+				this.orderList = result.data;
+				this.$Toast("修改成功");
+			}
 		}  // test OK
 	},
 
-	created() {
-		// 请求订单 All
-		
+	async created() {
+		let result = await this.$store.dispatch('order/getOrderList');
+		this.orderList = result.data;
+		console.log(this.orderList);
 	}
 }
 </script>
@@ -96,9 +106,12 @@ export default {
 	margin-top: 16px;
 	padding-bottom : 16px;
 	div{
+		&.active {
+			color: red;
+		}
 		display: inline-block;
 		text-align: center;
-		a .s-icon {
+		div .s-icon {
 			font-size: 28px;
 		}
 	}

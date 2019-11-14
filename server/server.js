@@ -32,6 +32,7 @@ server.use(express.urlencoded({ urlencoded: false }));
 server.use(express.json());
 
 server.use("/api/user", require("./routers/userRouter"));
+server.use("/api/userinfo", require("./routers/infoRouter"));
 server.use("/api/order", require("./routers/orderRouter"));
 server.use("/api/food", require("./routers/foodRouter"));
 

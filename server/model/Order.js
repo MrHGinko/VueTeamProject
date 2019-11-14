@@ -11,7 +11,7 @@ const Order = mongoose.model(
 			type:String,
 			required: true
 			// orderID 为 外卖ID 或 电影ID
-		},
+		}, 
 		orderName: {
 			type: String,
 			required: true
