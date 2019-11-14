@@ -1,6 +1,6 @@
 <template>
-  <div class="city">
-      <h1>City</h1>
+  <div class="comming">
+      <h1>CommingSoon</h1>
   </div>
 </template>
 
@@ -9,7 +9,5 @@ export default {
 
 }
 </script>
-
 <style>
-
 </style>

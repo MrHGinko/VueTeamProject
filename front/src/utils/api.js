@@ -1,18 +1,18 @@
 // food页面的json渲染数据
 
-const FOOD_API = '/api/food/food_index';
+const FAST_MOVIE_API = '/api/movie/fast_movie';
 
-const FOOD_FIND_LIST_API = '/api/food/find_list';
+const LOCAL_FILE_API = '/api/movie/local_file';
 
-const FOOD_RESTAUTANT_API = '/api/food/restautant_list';
+const MOVIE_LIST_API = '/api/movie/movie_list';
 
-const FOOD_SELLER_API = '/api/food/seller';
+const MOVIE_LIST_NAV_API = '/api/movie/movie_list_nav';
 // -------------------------------
 
 
 export default {
-	FOOD_API,
-	FOOD_FIND_LIST_API,
-	FOOD_RESTAUTANT_API,
-	FOOD_SELLER_API
+    FAST_MOVIE_API,
+    LOCAL_FILE_API,
+    MOVIE_LIST_API,
+    MOVIE_LIST_NAV_API
 }

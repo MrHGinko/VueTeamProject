@@ -1,5 +1,5 @@
 <template>
-<div class="app-header border-bottom">
+<div class="app-header border-bottom mymovie">
   <van-icon v-if="hasBack" class="back-btn" name="arrow-left" @click="backAction"/>
   <h1 class="title text-overflow">{{title}}</h1>
   <slot name="right-btn"/>
@@ -51,4 +51,8 @@ export default {
       line-height: 44px;
     }
   }
+    .mymovie{
+        background:#f03d37;
+        color: #fff;
+    }
 </style>

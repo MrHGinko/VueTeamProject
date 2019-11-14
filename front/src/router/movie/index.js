@@ -5,22 +5,22 @@ export default {
     children: [{
             path: 'city',
             component: () =>
-                import ('../../components/City/index')
+                import ('../../views/Movie/City/index')
         },
         {
             path: 'commingsoon',
             component: () =>
-                import ('../../components/commingSoon')
+                import ('../../views/Movie/CommingSoon/index')
         },
         {
             path: 'nowplaying',
             component: () =>
-                import ('../../components/NowPlaying')
+                import ('../../views/Movie/NowPlaying/index')
         },
         {
             path: 'search',
             component: () =>
-                import ('../../components/search')
+                import ('../../views/Movie/Search/index')
         }
     ]
 }
