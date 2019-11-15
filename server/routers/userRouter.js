@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../model/User");
+const UserInfo = require("../model/UserInfo");
 const router = new express.Router();
 
 // 注册

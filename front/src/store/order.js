@@ -7,7 +7,7 @@ const state = {
 
 const getters = {
 	showList(state, flag) {
-		return state.orderList.filters(item=>item.status === flag);
+		return state.orderList.filter(item=>item.status === flag);
 	}
 };
 

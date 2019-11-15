@@ -45,9 +45,12 @@ export default {
 				this.exitLog();
 				this.$store.commit('setLogin', true);
 				this.$store.commit('setUsername', this.username);
+
+				// vuex 获取 userinfo
+				await this.$store.dispatch('mine/refreshData');
 			}
 			this.username = ''; this.password= '';
-		}
+		},
 	}
 }
 </script>

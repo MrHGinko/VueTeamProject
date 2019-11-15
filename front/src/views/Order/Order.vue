@@ -58,6 +58,10 @@ export default {
 			this.status = 'all';
 		},  // test OK
 		async HandleChange(id, status) {
+			if(status === 1) {
+				
+			}
+
 			let order = {
 				id,
 				change: status,

@@ -39,6 +39,9 @@ export default {
 			let result = await this.$store.dispatch('mine/userRegiesterAction', user);
 			console.log(result);
 			result && this.$Toast(result);
+			if(result.code === 0) {
+				this.toLogin();
+			}
 			this.username = ''; this.password= '';
 		}
 	}

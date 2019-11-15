@@ -2,13 +2,15 @@ import api from "../utils/api";
 import Http from "../utils/Http";
 
 const state = {
-
+	userInfo: {}
 };
 
 const getters = {};
 
 const mutations = {
-
+	setUserInfo(state, userInfo) {
+		state.userInfo = userInfo;
+	}
 };
 
 const actions = {
@@ -42,6 +44,11 @@ const actions = {
 	async userChangeInfo(context, options) {
 		let result = await Http.post(api.USER_CHANGEINFO_API,options);
 		return result.data;
+	},
+	async refreshData(context) {
+		let result = await context.dispatch('userGetInfo');
+		context.commit('setUserInfo', result.data[0]);
+		context.commit('setUsername',  result.data[0].nickName, { root: true }); // 设置第三个参数 {root: true} 则代表使用index下的方法
 	}
 };
 
