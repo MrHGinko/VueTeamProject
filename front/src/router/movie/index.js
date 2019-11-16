@@ -15,7 +15,12 @@ export default {
         {
             path: 'nowplaying',
             component: () =>
-                import ('../../views/Movie/NowPlaying/index')
+                import ('../../views/Movie/NowPlaying/index'),
+            children: [{
+                path: 'detail/:id',
+                component: () =>
+                    import ('../../views/Movie/NowPlaying/detail/detail.vue')
+            }]
         },
         {
             path: 'search',

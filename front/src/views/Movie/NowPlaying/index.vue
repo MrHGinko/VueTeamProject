@@ -1,10 +1,10 @@
 <template>
   <div class="nowplay">
         <app-scroll class="content" >
-
+<router-link to="/nowplaying/detail"></router-link>
 <scroller :on-refresh="refresh" :on-infinite="infinite" ref="myscroller">
           <ul>
-          <li class="uls licontent" v-for="item in arr1"  :key="item.id"  >
+          <li class="uls licontent" v-for="item in arr1"  :key="item.id"  v-lazy="item">
             <!-- <span>{{item.id}}</span> -->
             <img :src="item.jpgUrl" alt="">
             <div class="licenter">
@@ -14,7 +14,7 @@
             <h3 class="line-ellipsis">{{item.showInfo}}</h3>
             </div>
             <div class="liright">
-                <p>购票</p>
+                <p>{{item.pd}}</p>
             </div>
           </li>
           </ul>
@@ -27,7 +27,10 @@
 // import nowplayData from '../../../services/NowPlayServe'
 // let {nowplay} = nowplayData;
 import VueScroller from 'vue-scroller'
-import axios from 'axios'
+import axios from 'axios';
+import Vue from 'vue';
+import { Lazyload } from 'vant'
+Vue.use(Lazyload);
 export default {
 data () {
   return {
@@ -36,15 +39,16 @@ data () {
     noDate:false,
    arr:[],
   page:1,
-  pageSize:10
+  pageSize:10,
+  ticket:'',
+  ac:false
   }
 },
-
-
-
-
-
 methods:{
+
+
+  
+
    // 获取数据
      getData(){
            var that=this;
@@ -84,7 +88,7 @@ methods:{
      }
     },
 
-
+/* 请求本地文件，渲染页面 */
   requestData(){
  axios.get('/static/movie_list.json', { baseURL: 'http://localhost:8080' })
     .then(response => {
@@ -100,23 +104,44 @@ methods:{
            sc:element.sc,
            showInfo:element.showInfo,
            star:element.star,
-           wish:element.wish
+           wish:element.wish,
+           /* 调用判断是否上映显示状态 */
+           pd:this.pd(element.showInfo)
          }
   });
-            console.log(this.arr);
+
+      let pd = this.arr1.forEach(element => {
+         this.pd(element.showInfo)
+      });
+
 
     }).catch(error => {
         window.console.log(error);
     })
     },
+
+    /* 判断是否已经上映 */
+    pd(element){
+      if(element.substr(0,1)=="2"){
+        return this.ticket="预购"
+      }else{
+        return this.ticket = '购买'
+      }
+    }
 },
 
 
-
+computed: {
+     
+},
 
 
 mounted () {
+
+   /*vue实例挂载完成，data.message成功渲染。*/
   this.getData()
+  
+  
 },
 
 
@@ -124,8 +149,11 @@ mounted () {
 
 
 created () {
-  // console.log(nowplay)
-  this. requestData();
+ 
+  /* created阶段，vue实例的数据对象data有了，el还没有 */
+  this.requestData();
+  
+
 }
 }
 </script>
