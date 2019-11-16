@@ -35,6 +35,8 @@
 			> <infoMask v-model="isShow"/> </van-popup>
 		</div>
 
+		<loading v-if="isLoading" type="spinner"></loading>
+
 		<router-view name="mineChild">  </router-view>
 	</div>
 </template>
@@ -107,6 +109,9 @@ export default {
 		}
 	},
 	computed: {
+		isLoading() {
+			return this.$store.state.isLoading;
+		},
 		isLogin() {
 			return this.$store.state.isLogin;
 		},

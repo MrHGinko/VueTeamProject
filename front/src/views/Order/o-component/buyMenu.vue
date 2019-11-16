@@ -8,6 +8,7 @@
 			<p class="i-pay border-bottom">您应付款: <span class="price"> {{order.price}} </span> </p>
 			<p class="i-balance border-bottom">余额: <span :class="active"> {{$store.state.mine.userInfo.balance}} </span> </p>
 		</div>
+			<loading v-if="isLoading" type="spinner"></loading>
 	</div>
 </template>
 
@@ -36,6 +37,9 @@ export default {
 		}
 	},
 	computed: {
+		isLoading() {
+			return this.$store.state.isLoading;
+		},
 		active() {
 			if(this.order.price <= this.$store.state.mine.userInfo.balance) {
 				this.can = true;
@@ -49,9 +53,9 @@ export default {
 	methods: {
 		async topay(id, change) {
 			console.log(id, change, this.can);
+			this.$store.commit('setLoading', true);
 			if(this.can) {
 				//可以付款, 余额大于应付款金额
-
 				// 修改金额 修改积分
 				let result = await this.$store.dispatch('mine/userChangeInfo',{
 					balance: Number(this.$store.state.mine.userInfo.balance - this.order.price),
@@ -63,15 +67,16 @@ export default {
 
 				if(this.gopay(id, change)) {
 					this.$Toast('付款成功');
+					this.$store.commit('setLoading', false);
 					this.$emit('input', false);
 				} else {
 					this.$Toast('发生未知错误');
+					this.$store.commit('setLoading', false);
 					this.$emit('input', false);
 				}
-
-
 			}else {
 				this.$Toast('您的余额不足');
+				this.$store.commit('setLoading', false);
 				this.$emit('input', false);
 			}
 		},

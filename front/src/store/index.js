@@ -10,6 +10,7 @@ export default new Vuex.Store({
         state: {
 		isLogin: (localStorage.getItem('isLogin') === 'true') ? true : false,
 		username: localStorage.getItem('username') || '获取错误',
+		isLoading: false,
 	},
         mutations: {
 		setLogin(state, flag) {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
 		setUsername(state, value) {
 			state.username = value;
 			localStorage.setItem('username', value);
+		},
+		setLoading(state, flag) {
+			state.isLoading = flag;
 		}
 	},
         actions: {

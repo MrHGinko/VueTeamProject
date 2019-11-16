@@ -14,6 +14,8 @@
 		</div>
 
 		<button v-if="isUpdate" class="btn" @click="reqChange()"> 确认修改 </button>
+				<loading v-if="isLoading" type="spinner"></loading>
+
 	</div>
 </template>
 
@@ -31,16 +33,21 @@ export default {
 		}
 	},
 	computed: {
-
+		isLoading() {
+			return this.$store.state.isLoading;
+		}
 	},
 	watch: {
 		value() {
-			
 			if(!this.value) {
 				this.nickName = this.$store.state.mine.userInfo.nickName;
 				this.balance = this.$store.state.mine.userInfo.balance;
 				this.point = this.$store.state.mine.userInfo.point;
 				this.isUpdate = false;
+			} else {
+				this.nickName = this.$store.state.mine.userInfo.nickName;
+				this.balance = this.$store.state.mine.userInfo.balance;
+				this.point = this.$store.state.mine.userInfo.point;
 			}
 			// 如果未修改就退出, 初始化状态
 		},
@@ -48,7 +55,6 @@ export default {
 			if(!this.isUpdate && this.value) {
 				this.isUpdate = true;
 			}
-			
 		},
 		balance() {
 			if(!this.isUpdate  && this.value) {
@@ -58,15 +64,15 @@ export default {
 	},
 	methods: {
 		async reqChange() {
+			this.$store.commit('setLoading', true);
 			let result = await this.$store.dispatch('mine/userChangeInfo',{
 				nickName: this.nickName,
 				balance: this.balance,
 			})
-			let fresh = await this.$store.dispatch('mine/userGetInfo');
-			this.$store.commit('mine/setUserInfo', fresh.data[0]);
-			this.$store.commit('setUsername',  fresh.data[0].nickName);
+			let fresh = await this.$store.dispatch('mine/refreshData');
 			console.log(result);
 			this.isUpdate = false;
+			this.$store.commit('setLoading', false);
 			this.$emit('input', false)
 		}, //test OK
 	},
