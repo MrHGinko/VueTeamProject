@@ -9,7 +9,6 @@ router.get("/get_info",async (req,res) => {
 		code: 0,
 		message: 'OK',
 		data: result,
-		hello: "bye",
 	})
 
 
