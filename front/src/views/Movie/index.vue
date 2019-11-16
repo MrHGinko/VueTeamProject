@@ -22,10 +22,10 @@ import City from './City/index'
 import axios from 'axios'
 export default {
   components: {
-    Search,
-    CommingSoon,
-    NowPlaying,
-    City
+    // Search,
+    // CommingSoon,
+    // NowPlaying,
+    // City
   },
   props: [String],
   data () {

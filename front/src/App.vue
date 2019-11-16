@@ -9,7 +9,7 @@ export default {
 
 }
 </script>
-
+  
 <style>
   .tab_bar{
     position: fixed;

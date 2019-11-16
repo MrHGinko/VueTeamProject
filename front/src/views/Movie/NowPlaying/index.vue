@@ -1,7 +1,7 @@
 <template>
   <div class="nowplay">
+   <router-view></router-view>
         <app-scroll class="content" >
-<router-link to="/nowplaying/detail"></router-link>
 <scroller :on-refresh="refresh" :on-infinite="infinite" ref="myscroller">
           <ul>
           <li class="uls licontent" v-for="item in arr1"  :key="item.id"  v-lazy="item">
@@ -14,12 +14,13 @@
             <h3 class="line-ellipsis">{{item.showInfo}}</h3>
             </div>
             <div class="liright">
-                <p>{{item.pd}}</p>
+                <router-link to="/movie/detail"><p @click="goDetail(item.id)">{{item.pd}}</p></router-link>      
             </div>
           </li>
           </ul>
            </scroller>
         </app-scroll>
+        
   </div>
 </template>
 
@@ -29,9 +30,13 @@
 import VueScroller from 'vue-scroller'
 import axios from 'axios';
 import Vue from 'vue';
+import Detail from './detail/detail'
 import { Lazyload } from 'vant'
 Vue.use(Lazyload);
 export default {
+  components: {
+    Detail
+  },
 data () {
   return {
     nowplayList:[],
@@ -46,7 +51,10 @@ data () {
 },
 methods:{
 
-
+  goDetail(id){
+      this.$router.push(`/movie/detail/${id}`);
+      this.$routerrouter.go()  
+  },
   
 
    // 获取数据

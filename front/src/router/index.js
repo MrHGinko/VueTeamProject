@@ -17,6 +17,10 @@ const routes = [
     //         }
     //     },
     {
+        path: '/movie',
+        redirect: '/movie/nowplaying'
+    },
+    {
         path: '/',
         redirect: '/movie'
     },
