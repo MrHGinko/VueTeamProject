@@ -15,7 +15,6 @@ const mutations = {
 	setOrderList(state, list) {
 		state.orderList = list;
 	}
-	
 };
 
 const actions = {

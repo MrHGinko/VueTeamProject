@@ -9,7 +9,7 @@
 			<p>订单号：{{order._id}}</p>
 			<p>类型：{{order.orderType}}</p>
 			<p>总价：{{order.price}}
-				<button class="act" @click="change(order._id, order.status + 1)">{{btnTxt[order.status]}}</button>
+				<button class="act" :class="statusClass" @click="change(order._id, order.status + 1)">{{btnTxt[order.status]}}</button>
 			</p>
 		</div>
 		<!-- {{order.orderName}}
@@ -33,9 +33,12 @@ export default {
 		}
 	},
 	computed: {
-		
+		statusClass() {
+			return `s${this.order.status}`;
+		},
 	},
 	methods: {
+
 		getDate(orderDate) {
 			let date = new Date(orderDate);
 			let time = date.getHours()+" : "+date.getMinutes() +" "+date.getFullYear() + '-' + (date.getMonth()+1) +'-' + (date.getDate()+1) ;
@@ -48,7 +51,7 @@ export default {
 			} else {
 				console.log('去评价页面');
 			}
-		}
+		},
 	}
 }
 </script>
@@ -83,9 +86,20 @@ export default {
 			.act {
 				float: right;
 				border: none;
-				background: rgb(90, 255, 247);
 				border-radius: 4px;
 				box-shadow: 1px 1px 5px black;
+			}
+			.s0 {
+				background-color: rgb(48, 248, 255);
+			}
+			.s1 {
+				background: rgb(255, 196, 33);
+			}
+			.s2 {
+				background: rgb(255, 39, 129);
+			}
+			.s3 {
+				background: rgb(46, 255, 192);
 			}
 		}
 	}

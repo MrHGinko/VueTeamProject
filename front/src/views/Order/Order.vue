@@ -11,7 +11,7 @@
 				</div>
 			</div>
 		</div>
-		<p class="last-o">最近订单</p>
+		<p class="last-o" @click="testAdd()">最近订单</p>
 
 		<!-- v-for 展示最近订单  -->
 		<div class="order-list">
@@ -22,15 +22,24 @@
 		</div>
 	
 	</scroll-box>
-		
+		<van-popup
+			closeable
+			v-model="isShow"
+			position="left"
+			:style="{ width: '72%', height: '100%' }"
+		> <buyMenu v-model="isShow" :orderID="buyID"/> </van-popup>
 </div>
 </template>
 
 <script>
+import buyMenu from './o-component/buyMenu'
 import orderItem from './o-component/order-item'
+import {Popup} from 'vant'
 export default {
 	components: {
 		orderItem,
+		buyMenu,
+		[Popup.name]: Popup
 	},
 	data() {
 		return {
@@ -42,6 +51,8 @@ export default {
 			],
 			orderList: [],
 			status: 'all',
+			isShow: false,
+			buyID: null,
 		}
 	},
 	computed: {
@@ -50,35 +61,61 @@ export default {
 			else return this.orderList.filter(item=>item.status === this.status);	
 		}
 	},
+	watch: {
+		isShow() {
+			if(!this.isShow) {
+				this.refreshData();
+			}
+		}
+	},
 	methods: {
+		async refreshData() {
+			let result = await this.$store.dispatch('order/getOrderList');
+			this.$store.commit('order/setOrderList', result.data);
+			this.orderList = this.$store.state.order.orderList;
+		},
 		changeStatus(flag) {
 			this.status = flag;
 		},
 		allOrder() {
 			this.status = 'all';
 		},  // test OK
+		async testAdd() {
+			let result = await this.$store.dispatch('order/addOrder', [
+				'F98', 'Loving Vincent', 'film', 30
+			]);
+			this.refreshData();
+			console.log(result);
+		},  
 		async HandleChange(id, status) {
 			if(status === 1) {
-				
+				// console.log('计算余额');
+				this.buyID = id;
+				this.isShow = true;
+				return ;
 			}
-
-			let order = {
-				id,
-				change: status,
-			};
-			let result = await this.$store.dispatch('order/changeStatus', order);
-			if(result.data.code === 0) {
-				let result = await this.$store.dispatch('order/getOrderList');
-				this.orderList = result.data;
-				this.$Toast("修改成功");
+			else{
+				let order = {
+					id,
+					change: status,
+				};
+				let result = await this.$store.dispatch('order/changeStatus', order);
+				if(result.data.code === 0) {
+					let result = await this.$store.dispatch('order/getOrderList');
+					this.orderList = result.data;
+					this.$Toast("修改成功");
+				}
 			}
+		
 		}  // test OK
 	},
 
 	async created() {
 		let result = await this.$store.dispatch('order/getOrderList');
-		this.orderList = result.data;
-		console.log(this.orderList);
+		this.$store.commit('order/setOrderList', result.data);
+		this.$store.dispatch('mine/refreshData');
+		console.log(this.$store.state.order.orderList);
+		this.orderList = this.$store.state.order.orderList;
 	}
 }
 </script>
