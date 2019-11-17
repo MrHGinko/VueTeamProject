@@ -1,0 +1,263 @@
+{
+    "coming": [],
+    "movieIds": [1163219, 1218029, 1250690, 247730, 1250952, 1250662, 342773, 1292, 346640, 1230121, 1300298, 1268562, 345419, 1222930, 1215326, 1217041, 346690, 1256872, 1298835, 1249366, 1201711, 1277939, 345397, 1278472, 597919, 1284496, 1250700, 503342, 1300736, 246300, 1278145, 1132856, 1215348, 1300762, 1262185, 342146, 1300780, 1205938, 1300059, 1136547, 1242130, 1225993, 1198265, 1300294, 1301108, 1277982, 1284310, 1290390, 1255359, 1300648, 1300649, 1299565, 1300657, 1300651, 1300650, 1300652, 343526, 1300691, 1261130, 1300681, 1300686, 1261128, 1261165, 1261122, 1280943, 1281098, 1233227],
+    "stid": "576591972453269000",
+    "stids": [{
+        "movieId": 1163219,
+        "stid": "576591972453269000_a1163219_c0"
+    }, {
+        "movieId": 1218029,
+        "stid": "576591972453269000_a1218029_c1"
+    }, {
+        "movieId": 1250690,
+        "stid": "576591972453269000_a1250690_c2"
+    }, {
+        "movieId": 247730,
+        "stid": "576591972453269000_a247730_c3"
+    }, {
+        "movieId": 1250952,
+        "stid": "576591972453269000_a1250952_c4"
+    }, {
+        "movieId": 1250662,
+        "stid": "576591972453269000_a1250662_c5"
+    }, {
+        "movieId": 342773,
+        "stid": "576591972453269000_a342773_c6"
+    }, {
+        "movieId": 1292,
+        "stid": "576591972453269000_a1292_c7"
+    }, {
+        "movieId": 346640,
+        "stid": "576591972453269000_a346640_c8"
+    }, {
+        "movieId": 1230121,
+        "stid": "576591972453269000_a1230121_c9"
+    }, {
+        "movieId": 1300298,
+        "stid": "576591972453269000_a1300298_c10"
+    }, {
+        "movieId": 1268562,
+        "stid": "576591972453269000_a1268562_c11"
+    }],
+    "total": 67,
+
+    "detailMovie": [{
+            "albumImg": "http://p0.meituan.net/moviemachine/bf08d8b6d1cc1c44487b3cc3d1c2cb3137665.jpg",
+            "availableEpisodes": 0,
+            "awardUrl": "",
+            "backgroundColor": "#3E5A66",
+            "bingeWatch": 646,
+            "bingeWatchst": 0,
+            "cat": "剧情,历史,战争",
+            "comScorePersona": true,
+            "commented": false,
+            "dir": "罗兰·艾默里奇",
+            "distributions": [{
+                "movieScoreLevel": "9-10分",
+                "proportion": "75.00"
+            }, {
+                "movieScoreLevel": "5-8分",
+                "proportion": "23.05"
+            }, {
+                "movieScoreLevel": "1-4分",
+                "proportion": "1.95"
+            }],
+            "dra": "电影讲述的是第二次世界大战太平洋战争重要转折点——中途岛海战：经此一役，日本海军受到“降维打击”，美日海上实力反转，从而扭转了整个太平洋战场的局势。影片通过参战士兵和飞行员一个个鲜活的故事，带领观众逐步进入1942年6月初发生在太平洋中途岛附近那场令人难以置信的战争……",
+            "dur": 137,
+            "egg": false,
+            "enm": "Midway",
+            "episodeDur": 137,
+            "episodes": 0,
+            "fra": "法国,捷克,德国,丹麦,希腊,中国香港,匈牙利,葡萄牙,新加坡,保加利亚,加拿大,芬兰,英国,印度尼西亚,爱尔兰,印度,立陶宛,波兰,中国台湾,美国,荷兰,斯洛伐克,冰岛,墨西哥,挪威,瑞典,俄罗斯,澳大利亚,哥伦比亚,意大利,土耳其",
+            "frt": "2019-11-06,2019-11-07,2019-11-07,2019-11-07,2019-11-07,2019-11-07,2019-11-07,2019-11-07,2019-11-07,2019-11-08,2019-11-08,2019-11-08,2019-11-08,2019-11-08,2019-11-08,2019-11-08,2019-11-08,2019-11-08,2019-11-08,2019-11-08,2019-11-14,2019-11-14,2019-11-15,2019-11-15,2019-11-15,2019-11-15,2019-11-21,2019-11-28,2019-11-28,2019-11-28,2019-11-29",
+            "globalReleased": true,
+            "id": 1163219,
+            "img": "http://p0.meituan.net/w.h/movie/70b4d52270257e71046767ea1be1bede2983514.jpg",
+            "latestEpisode": 0,
+            "modcsSt": false,
+            "movieType": 0,
+            "multiPub": true,
+            "musicName": "Attack On Midway",
+            "musicNum": 23,
+            "musicStar": "Thomas Wander;Harald Kloser",
+            "nm": "决战中途岛",
+            "onSale": true,
+            "onlinePlay": false,
+            "orderSt": 0,
+            "oriLang": "英语",
+            "photos": ["http://p1.meituan.net/w.h/movie/23a313cf7757cfb4230f94101945a3da318110.jpg", "http://p0.meituan.net/w.h/movie/5a6fad5d353e7b2a0823f034e7aa4df3240311.jpg", "http://p0.meituan.net/w.h/movie/e985f9adbcb3597b2fdab41747e3b618232057.jpg", "http://p0.meituan.net/w.h/movie/4a329b82392b1aeffc15a003d3886ee1228428.jpg", "http://p0.meituan.net/w.h/movie/2bdd2ab2d03c5561c274c9f0de80b635166403.jpg", "http://p0.meituan.net/w.h/movie/351b15a70492641fef0f922de9b41d10219063.jpg", "http://p0.meituan.net/w.h/movie/2e3fe045ea759ccebe9e3503358eb20b343895.jpg", "http://p0.meituan.net/w.h/movie/a57ae4070997195a8ed436fea4881db5398055.jpg", "http://p0.meituan.net/w.h/movie/bc2be81636d27a37be91957344c5f427446756.jpg", "http://p0.meituan.net/w.h/movie/6c07fb6617d4d18d7fd5ad929283dad9400691.jpg", "http://p1.meituan.net/w.h/movie/ed532fe0befc5f9d648e523f11a57938275637.jpg", "http://p0.meituan.net/w.h/movie/6c089ac430d351dcfb9aa3ac5defbc56125656.jpg", "http://p0.meituan.net/w.h/movie/b99b7b6b02de0b23c7e3327ab55341f7135510.jpg", "http://p0.meituan.net/w.h/movie/b960cc0b126fec05ce42bb859a57915a181355.jpg", "http://p0.meituan.net/w.h/movie/57f293ea1000d3980a48f5659b76428f185017.jpg", "http://p0.meituan.net/w.h/movie/7433e1c668940bae4c3e4901824a207f429516.jpg", "http://p0.meituan.net/w.h/movie/157ca68e4411abfd18efab17fa2a993d201980.jpg", "http://p0.meituan.net/w.h/movie/e53889d0fecc7dcd805a3128195ba91f212816.jpg", "http://p0.meituan.net/w.h/movie/1994c48f34172d1c6e57e0412b789769255428.jpg", "http://p0.meituan.net/w.h/movie/060372d48f3da64531dada21ed9c2141167584.jpg"],
+            "pn": 196,
+            "preScorePersona": false,
+            "proScore": 0,
+            "proScoreNum": 1,
+            "pubDesc": "2019-11-08大陆上映",
+            "rt": "2019-11-08",
+            "sc": 9.1,
+            "scm": "",
+            "scoreLabel": "猫眼购票评分",
+            "showst": 3,
+            "snum": 70528,
+            "src": "美国",
+            "star": "艾德·斯克林,卢克·伊万斯,帕特里克·威尔森",
+            "type": 0,
+            "vd": "http://maoyan.meituan.net/movie/videos/854x480ee34b0d0d241488eb78a2bbb18ce424f.mp4",
+            "ver": "2D/中国巨幕/全景声",
+            "videoImg": "http://p0.meituan.net/movie/e985f9adbcb3597b2fdab41747e3b618232057.jpg@640w_360h_1e_1c",
+            "videoName": "单日票房三连冠 年度必看全景式海空激战大片",
+            "videourl": "http://maoyan.meituan.net/movie/videos/854x480ee34b0d0d241488eb78a2bbb18ce424f.mp4",
+            "viewedSt": 0,
+            "vnum": 17,
+            "vodFreeSt": 0,
+            "vodPlay": false,
+            "vodSt": 0,
+            "watched": 70609,
+            "wish": 34974,
+            "wishst": 0,
+            "version": ""
+
+        }, {
+            "albumImg": "http://p0.meituan.net/moviemachine/8d83c2270dae3d7d299fbc4e90822b9a50305.jpg",
+            "availableEpisodes": 0,
+            "awardUrl": "",
+            "backgroundColor": "#1B3B40",
+            "bingeWatch": 752994,
+            "bingeWatchst": 0,
+            "cat": "爱情,青春,剧情",
+            "comScorePersona": true,
+            "commented": false,
+            "dir": "曾国祥",
+            "distributions": [{
+                "movieScoreLevel": "9-10分",
+                "proportion": "88.39"
+            }, {
+                "movieScoreLevel": "5-8分",
+                "proportion": "7.67"
+            }, {
+                "movieScoreLevel": "1-4分",
+                "proportion": "3.95"
+            }],
+            "dra": "一场高考前夕的校园意外，改变了两个少年的命运。 陈念（周冬雨 饰）性格内向，是学校里的优等生，努力复习、考上好大学是高三的她唯一的念头。同班同学的意外坠楼牵扯出一连串不为人知的故事，陈念也被一点点卷入其中……在她最孤独的时刻，一个叫“小北”（易烊千玺 饰）的少年闯入了她的世界……大多数人的18岁都是明媚、快乐的，而他们却在18岁这个夏天提前尝到了成人世界的漠然。一场秘而不宣的“战斗”正在上演，他们将一起守护少年的尊严。",
+            "dur": 135,
+            "egg": false,
+            "enm": "Better Days",
+            "episodeDur": 135,
+            "episodes": 0,
+            "globalReleased": true,
+            "id": 1218029,
+            "img": "http://p0.meituan.net/w.h/movie/7b437e3a0d08d10e374ddc34f71b88fe3379132.jpg",
+            "latestEpisode": 0,
+            "modcsSt": false,
+            "movieType": 0,
+            "multiPub": false,
+            "musicName": "我们很好",
+            "musicNum": 9,
+            "musicStar": "林俊杰",
+            "nm": "少年的你",
+            "onSale": true,
+            "onlinePlay": false,
+            "orderSt": 0,
+            "oriLang": "国语",
+            "photos": ["http://p1.meituan.net/w.h/movie/eed0c7a8ba193c227f0dc6bd318dfd6d1052781.jpg", "http://p0.meituan.net/w.h/movie/d6a0f3d2f1b5b144b795db09a369f46e3223486.jpg", "http://p1.meituan.net/w.h/movie/e16aee94b05cc7c299597784659386a82336951.jpg", "http://p0.meituan.net/w.h/movie/248927c7466a4e67b96d3a0dca2da5401210121.jpg", "http://p0.meituan.net/w.h/movie/28cd468291c61b6bb7012b0725efeb763312360.jpg", "http://p0.meituan.net/w.h/movie/8e60ce8d89e32494d4eb9916eda65e612480262.jpg", "http://p0.meituan.net/w.h/movie/1b7185421653efb4f50e4d16196613ed3495601.jpg", "http://p0.meituan.net/w.h/movie/e37e7a7cf7266c3e01fcfa481d4e018e1021791.jpg", "http://p0.meituan.net/w.h/movie/f275747b9fe32845778f05ef0a68e143442656.jpg@2500w_2500h_1l_0e", "http://p1.meituan.net/w.h/movie/e0850d9bc2a1529a6b1c17656e1316d83441780.jpg", "http://p0.meituan.net/w.h/movie/99c5d96d596e6533622a0fe00dfac1d23154684.jpg", "http://p0.meituan.net/w.h/movie/f332ab0fcb5dd5bf56ebc791b48de1c13233641.jpg", "http://p0.meituan.net/w.h/movie/923fc35cbf1268a9bce2c479af4f122b3980723.jpg", "http://p0.meituan.net/w.h/movie/fbd7f8feb4eb3eb269d7b1c930f048b03369723.jpg", "http://p1.meituan.net/w.h/movie/4864115001eda37f3cee896844f02a3c2593017.jpg", "http://p1.meituan.net/w.h/movie/6d2d52081eb01beab1dea9a5af71d5eb3497553.jpg", "http://p1.meituan.net/w.h/movie/2bb6fbb9cf063a013bc06e0b78eb5a3d354027.jpg", "http://p0.meituan.net/w.h/movie/158602b1094deb4ae9a4dcade843a2383147983.jpg", "http://p0.meituan.net/w.h/movie/6b5e796fd791d9241b29fad6ca845cf32461336.jpg", "http://p1.meituan.net/w.h/movie/efd1cd1234639da4c2936dd686e472773051259.jpg"],
+            "pn": 153,
+            "preScorePersona": false,
+            "proScore": 0,
+            "proScoreNum": 2,
+            "pubDesc": "2019-10-25 09:00大陆上映",
+            "rt": "2019-10-25",
+            "sc": 9.4,
+            "scm": "",
+            "scoreLabel": "猫眼购票评分",
+            "showst": 3,
+            "snum": 1370629,
+            "src": "中国大陆",
+            "star": "周冬雨,易烊千玺,尹昉",
+            "type": 0,
+            "vd": "http://maoyan.meituan.net/movie/videos/854x480e9df22d1cc6e4e57ab0f42737d4a93e1.mp4",
+            "ver": "2D/中国巨幕/全景声",
+            "videoImg": "http://p0.meituan.net/movie/1c324b9a644dfbdc713834ee4f41b3d624876.jpg",
+            "videoName": "终极版预告片 守护少年反对校园欺凌",
+            "videourl": "http://maoyan.meituan.net/movie/videos/854x480e9df22d1cc6e4e57ab0f42737d4a93e1.mp4",
+            "viewedSt": 0,
+            "vnum": 18,
+            "vodFreeSt": 0,
+            "vodPlay": false,
+            "vodSt": 0,
+            "watched": 1175821,
+            "wish": 1056702,
+            "wishst": 0,
+            "version": ""
+        },
+        {
+            "albumImg": "http://p0.meituan.net/moviemachine/ce1c29a9df2e7bc22ba8046e5515714d32437.gif",
+            "availableEpisodes": 0,
+            "awardUrl": "",
+            "backgroundColor": "#665C29",
+            "bingeWatch": 5,
+            "bingeWatchst": 0,
+            "cat": "喜剧,爱情,犯罪",
+            "comScorePersona": true,
+            "commented": false,
+            "dir": "申奥",
+            "distributions": [{
+                "movieScoreLevel": "9-10分",
+                "proportion": "69.30"
+            }, {
+                "movieScoreLevel": "5-8分",
+                "proportion": "26.03"
+            }, {
+                "movieScoreLevel": "1-4分",
+                "proportion": "4.67"
+            }],
+            "dra": "吴海（大鹏 饰）为了给罹患哮喘的6岁儿子治病，在好友钟振江（张子贤 饰）的怂恿下，刻意结识了一个与他同样身处边缘和底层的网络女主播淼淼（柳岩 饰），决心酝酿一场别有用心的婚姻骗局……",
+            "dur": 112,
+            "egg": false,
+            "enm": "My Dear Liar",
+            "episodeDur": 112,
+            "episodes": 0,
+            "globalReleased": true,
+            "id": 1250690,
+            "img": "http://p1.meituan.net/w.h/movie/ddfb39b3491fa928f5aa3358464647c42801135.jpg",
+            "latestEpisode": 0,
+            "modcsSt": false,
+            "movieType": 0,
+            "multiPub": false,
+            "musicName": "不得了",
+            "musicNum": 1,
+            "musicStar": "柳岩",
+            "nm": "受益人",
+            "onSale": true,
+            "onlinePlay": false,
+            "orderSt": 0,
+            "oriLang": "国语",
+            "photos": ["http://p0.meituan.net/w.h/movie/05aa07571a2add10d76e26948ac39422384454.jpg", "http://p0.meituan.net/w.h/movie/9b928b657bfe471621d5a079c05b6d99458222.jpg", "http://p1.meituan.net/w.h/movie/6cb42149be66ef7415e9cdb88345379f498242.jpg", "http://p0.meituan.net/w.h/movie/9a065503e50bf2eb8eebbe798a7c186a588552.jpg", "http://p0.meituan.net/w.h/movie/b60780ef0ab59b2320bb9dc88173115d585917.jpg", "http://p0.meituan.net/w.h/movie/bb977c7d8d0a30b9fbf21f357c505ca3450170.jpg", "http://p0.meituan.net/w.h/movie/9a227550e7864d85cfaa767d800019fd733065.jpg", "http://p1.meituan.net/w.h/movie/44809bfca1cf19d717cf2ee18fca17ac480250.jpg", "http://p0.meituan.net/w.h/movie/9ec9b8edfbd73c07a51719492de60a5c362790.jpg", "http://p0.meituan.net/w.h/movie/c9fc1ca4f0b5689f981901d3b1a8c439355945.jpg", "http://p0.meituan.net/w.h/movie/b4468cab8cba1735003ea1f36e80b3d1611343.jpg", "http://p1.meituan.net/w.h/movie/6087d13a04c0b7523871d637bcc120f2393659.jpg", "http://p0.meituan.net/w.h/movie/4610f14bcdd06cc0477a1792d2787f2a420031.jpg", "http://p0.meituan.net/w.h/movie/8e6e01fc8a17c2c49253886ff0bc6f85609423.jpg", "http://p0.meituan.net/w.h/movie/d456644f16c1ae446030a93471d9c57e350117.jpg", "http://p0.meituan.net/w.h/movie/d367e66e67762b31edf75a0945e307ae443783.jpg", "http://p0.meituan.net/w.h/movie/4a0955cd5925d3b842b626d4e190c6a7470321.jpg", "http://p0.meituan.net/w.h/movie/e946c51d7208b460658b3ac6356a38c3557456.jpg", "http://p0.meituan.net/w.h/movie/f7b671f00cfa63ceb72002d9c5944ea5362233.jpg", "http://p1.meituan.net/w.h/movie/1f54ccefb5c57ef35f62efd388927d64417334.jpg"],
+            "pn": 117,
+            "preScorePersona": false,
+            "proScore": 0,
+            "proScoreNum": 1,
+            "pubDesc": "2019-11-08 08:00大陆上映",
+            "rt": "2019-11-08",
+            "sc": 8.8,
+            "scm": "",
+            "scoreLabel": "猫眼购票评分",
+            "showst": 3,
+            "snum": 57547,
+            "src": "中国大陆",
+            "star": "大鹏,柳岩,张子贤",
+            "type": 0,
+            "vd": "http://maoyan.meituan.net/movie/videos/854x48046405d5fa0e747c1ba0ba945002b2cc5.mp4",
+            "ver": "2D",
+            "videoImg": "http://p0.meituan.net/movie/d9a7b273ce5911e885c5fb696c7510cf17500.jpg@640w_360h_1e_1c",
+            "videoName": "今日上映 那男孩哭着说，谢谢你爱过我！",
+            "videourl": "http://maoyan.meituan.net/movie/videos/854x48046405d5fa0e747c1ba0ba945002b2cc5.mp4",
+            "viewedSt": 0,
+            "vnum": 19,
+            "vodFreeSt": 0,
+            "vodPlay": false,
+            "vodSt": 0,
+            "watched": 53279,
+            "wish": 36026,
+            "wishst": 0,
+            "version": ""
+        }
+    ]
+}
