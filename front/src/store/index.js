@@ -1,16 +1,15 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import food from "./food";
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
-        state: {
-                username: "?hello"
-        },
-        mutations: {},
-        actions: {},
-        modules: {
-                food
-        }
-});
+  state: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
+  modules: {
+  }
+})

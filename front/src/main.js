@@ -1,15 +1,19 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import plugin from "./plugin";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import 'lib-flexible/flexible'
+import pubsub from './pubub'
 
-Vue.config.productionTip = false;
 
-Vue.use(plugin);
+Vue.prototype.$pubsub = pubsub;
+
+Vue.prototype.$center = new Vue();
+
+Vue.config.productionTip = false
 
 new Vue({
-        router,
-        store,
-        render: h => h(App)
-}).$mount("#app");
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')

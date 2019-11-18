@@ -1,5 +1,5 @@
 <template>
-	<div class="scroll-box" ref="scroll">
+	<div class="rightInfo-box" ref="scroll">
 		<div class="scoll-wrap">
 			<slot/>
 		</div>
@@ -9,7 +9,7 @@
 <script>
 import BScroll from 'better-scroll'
 export default {
-	name: 'scroll-box',
+	name: 'rightInfo-box',
 	mounted() {
 		this.scroll = new BScroll(this.$refs.scroll, {
 			tap: true,
@@ -24,13 +24,27 @@ export default {
 		this.scroll.on('beforeScrollStart', () => {
 			this.scroll.refresh();
 		});
+		this.scroll.on('scroll',(pos) => {
+  			this.$center.$emit('onScroll', pos.y);
+		})
+	},
+	methods:{
+		listener(data){
+			this.scroll.scrollTo(0,-data, 500);
+		}
+	},
+	created(){
+		this.$center.$on('send', this.listener);
+	},
+	beforeDestroy(){
+		this.$center.$off('send', this.listener);
 	}
-		
+	
 };
 
 </script>
 <style scoped>
-.scroll-box {
+.rightInfo-box {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;

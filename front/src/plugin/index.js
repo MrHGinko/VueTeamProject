@@ -1,12 +1,17 @@
-import { Icon, Toast } from "vant";
+import { Toast } from "vant";
 import ScrollBox from "./scroll-box.vue";
+import RightInfoBox from "./RightInfo-scroll.vue";
+import LeftInfoBox from "./LeftInfo-scroll.vue";
 
 export default {
-        install(Vue) {
-		Vue.use(Icon);
-		// Vue.use(Toast);
-		Vue.prototype.$Toast = Toast;
+    install(Vue) {
 
-		Vue.component(ScrollBox.name, ScrollBox);
-        }
+    Vue.prototype.$Toast = Toast;
+
+    Vue.component(ScrollBox.name, ScrollBox);
+
+    Vue.component(RightInfoBox.name, RightInfoBox);
+
+    Vue.component(LeftInfoBox.name, LeftInfoBox);
+    }
 };

@@ -1,5 +1,5 @@
 <template>
-	<div class="scroll-box" ref="scroll">
+	<div class="leftInfo-box" ref="scroll">
 		<div class="scoll-wrap">
 			<slot/>
 		</div>
@@ -9,7 +9,7 @@
 <script>
 import BScroll from 'better-scroll'
 export default {
-	name: 'scroll-box',
+	name: 'leftInfo-box',
 	mounted() {
 		this.scroll = new BScroll(this.$refs.scroll, {
 			tap: true,
@@ -25,12 +25,12 @@ export default {
 			this.scroll.refresh();
 		});
 	}
-		
+	
 };
 
 </script>
 <style scoped>
-.scroll-box {
+.leftInfo-box {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
