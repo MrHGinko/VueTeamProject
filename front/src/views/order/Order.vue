@@ -124,8 +124,7 @@ export default {
 
 <style lang="scss" scoped>
 .content {
-	position: absolute;
-	top: 48px;
+	padding-top: 48px;
 }
 .a-order {
 	
@@ -166,7 +165,6 @@ export default {
 	color: rgb(97, 97, 97)
 }
 .order-list {
-	// height: 377px;  全部
-	height: 416px;
+	height: 377px;  
 }
 </style>
