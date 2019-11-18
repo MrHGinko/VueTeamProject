@@ -1,186 +1,169 @@
 <template>
-  <div class="order">
-    <div class="title" ref="title">
-      <h2>订单</h2>
-      <i class="iconfont iconfangdajing"></i>
-    </div>
+<div id="Order">
+	<header-bar title="订单"></header-bar>
+	<div class="content">
+		<p class="a-order border-bottom" @click="allOrder()">我的订单 <span class="o-btn">全部订单 <van-icon class="o-ic" name="arrow"></van-icon></span></p>
+		<div class="s-o-list">
+			<div v-for="(item,index) in selectList" :key="index" :class="{active: index === status}">
+				<div @click="changeStatus(item.status)">
+					<span class="s-icon"> <van-icon :name="item.icon" /> </span> <br>
+					<span>{{item.title}}</span>
+				</div>
+			</div>
+		</div>
+		<p class="last-o" @click="testAdd()">最近订单</p>
 
-    <van-tabs v-model="active" animated line-width="20px" 
-    color="#ffd300" background="#FCFCFC" ref="orderDetail">
-        <van-tab title="全部订单" :style="{height:infoHeight}">
-          <Content class="allOrder">
-            <h3>一个订单都没有哦~</h3>
-            <p>给自己定一个小目标，先下一单。</p>
-            <router-link to="/home">去逛逛</router-link>
-            
-          </Content>
-        </van-tab>
-        <van-tab title="待评价" :style="{height:infoHeight}">
-          <!-- <Content class="appraise"> -->
-            <h3>一个订单都没有哦~</h3>
-            <p>给自己定一个小目标，先下一单。</p>
-            <router-link to="/home">去逛逛</router-link>
-          <!-- </Content> -->
-        </van-tab>
-        <van-tab title="退款" :style="{height:infoHeight}">
-          <!-- <Content class="refund"> -->
-            <h3>一个订单都没有哦~</h3>
-            <p>给自己定一个小目标，先下一单。</p>
-            <router-link to="/home">去逛逛</router-link>
-          <!-- </Content> -->
-        </van-tab>
-    </van-tabs>
-  </div>
+		<!-- v-for 展示最近订单  -->
+		<scroll-box class="order-list">
+		<div>
+			<orderItem v-for="item in showList" 
+			:order="item" 
+			:key="item._id"
+			@change="HandleChange"></orderItem>
+		</div>
+		</scroll-box>
+	
+	</div>
+		<van-popup
+			closeable
+			v-model="isShow"
+			position="left"
+			:style="{ width: '72%', height: '100%' }"
+		> <buyMenu v-model="isShow" :orderID="buyID"/> </van-popup>
+		<loading v-if="isLoading" type="spinner"></loading>
+</div>
 </template>
 
 <script>
-import { Tab, Tabs } from 'vant';
-import Content from '../lib/Content'
+import buyMenu from './o-component/buyMenu'
+import orderItem from './o-component/order-item'
+import {Popup} from 'vant'
 export default {
-  data() {
-    return {
-      active:0,
-      infoHeight:0
-    }
-  },
-  components:{
-       [Tabs.name]:Tabs,
-       [Tab.name]:Tab,
-       Content
-  },
-  methods:{
-    getHeight(){
-      return (window.innerHeight - (this.$refs.orderDetail.$refs.wrap.clientHeight + this.$refs.title.clientHeight) + 'px');
-    }
-  },
-  mounted(){
-    this.infoHeight = this.getHeight();
-    window.console.log(this.infoHeight);
-  }
+	components: {
+		orderItem,
+		buyMenu,
+		[Popup.name]: Popup
+	},
+	data() {
+		return {
+			selectList: [
+				{icon: 'peer-pay', title: '待付款', status: 0},
+				{icon: 'play', title: '待使用', status: 1},
+				{icon: 'comment-o', title: '待评价', status: 2},
+				{icon: 'replay', title: '售后', status: 3},
+			],
+			orderList: [],
+			status: 'all',
+			isShow: false,
+			buyID: null,
+		}
+	},
+	computed: {
+		isLoading() {
+			return this.$store.state.isLoading;
+		},
+		showList() {
+			if(this.status === 'all') return this.orderList;
+			else return this.orderList.filter(item=>item.status === this.status);	
+		}
+	},
+	watch: {
+		isShow() {
+			if(!this.isShow) {
+				this.refreshData();
+			}
+		}
+	},
+	methods: {
+		async refreshData() {
+			let result = await this.$store.dispatch('order/getOrderList');
+			this.$store.commit('order/setOrderList', result.data);
+			this.orderList = this.$store.state.order.orderList;
+		},
+		changeStatus(flag) {
+			this.status = flag;
+		},
+		allOrder() {
+			this.status = 'all';
+		},  // test OK
+		async testAdd() {
+			let result = await this.$store.dispatch('order/addOrder', [
+				'F98', 'Loving Vincent', 'film', 30
+			]);
+			this.refreshData();
+			console.log(result);
+		},  
+		async HandleChange(id, status) {
+			if(status === 1) {
+				// console.log('计算余额');
+				this.buyID = id;
+				this.isShow = true;
+				return ;
+			}
+			else{
+				let order = {
+					id,
+					change: status,
+				};
+				let result = await this.$store.dispatch('order/changeStatus', order);
+				if(result.data.code === 0) {
+					this.refreshData();
+					this.$Toast("修改成功");
+				}
+			}
+		
+		}  // test OK
+	},
+
+	async created() {
+		this.refreshData();
+		this.$store.dispatch('mine/refreshData');
+	}
 }
 </script>
-<style lang="scss" scoped>
-.order{
-  width: 100%;
-  height: 100%;
-  .title{
-    width: 100%;
-    height: 50px;
-    background: #FCFCFC;
-    position: relative;
-    h2{
-      font-weight: normal;
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-      color: #333333;
-      font-size: 18px;
-    }
-    .iconfangdajing{
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-      color: #333333;
-      position: absolute;
-      font-size: 18px;
-      right: 0;
-      top: 0;
-    }
-  }
-  .allOrder{
-    top: 0;
-    bottom: 49px;
-    h3{
-      font-weight: normal;
-      line-height: 20px;
-      font-size: 18px;
-      color:#666;
-      text-align: center;
-      margin-top: 160px;
-    }
-    p{
-      margin-top: 30px;
-      line-height: 16px;
-      text-align: center;
-      font-size: 14px;
-      color: #9F9F9F;
-    }
-    a{
-      width: 240px;
-      height: 46px;
-      line-height: 46px;
-      text-align: center;
-      color: #333;
-      font-size: 18px;
-      display: block;
-      background: #FFCD53;
-      margin: 26px auto 0;
-      border-radius: 4px;
-    }
-  }
-  .appraise{
-    top: 0;
-    bottom: 49px;
-    h3{
-      font-weight: normal;
-      line-height: 20px;
-      font-size: 18px;
-      color:#666;
-      text-align: center;
-      margin-top: 160px;
-    }
-    p{
-      margin-top: 30px;
-      line-height: 16px;
-      text-align: center;
-      font-size: 14px;
-      color: #9F9F9F;
-    }
-    a{
-      width: 240px;
-      height: 46px;
-      line-height: 46px;
-      text-align: center;
-      color: #333;
-      font-size: 18px;
-      display: block;
-      background: #FFCD53;
-      margin: 26px auto 0;
-      border-radius: 4px;
-    }
-  }
-  .refund{
-    top: 0;
-    bottom: 49px;
-    h3{
-      font-weight: normal;
-      line-height: 20px;
-      font-size: 18px;
-      color:#666;
-      text-align: center;
-      margin-top: 160px;
-    }
-    p{
-      margin-top: 30px;
-      line-height: 16px;
-      text-align: center;
-      font-size: 14px;
-      color: #9F9F9F;
-    }
-    a{
-      width: 240px;
-      height: 46px;
-      line-height: 46px;
-      text-align: center;
-      color: #333;
-      font-size: 18px;
-      display: block;
-      background: #FFCD53;
-      margin: 26px auto 0;
-      border-radius: 4px;
-    }
-  }
-}
 
+<style lang="scss" scoped>
+.content {
+	padding-top: 48px;
+}
+.a-order {
+	font-size: 12px;
+	line-height: 24px;
+	box-sizing: border-box;
+	padding: 8px 16px;
+	.o-btn {
+		font-size: 10px;
+		float: right;
+		color: rgb(175, 175, 175);
+		.o-ic {
+			vertical-align: middle
+		}
+	}
+}
+.s-o-list {
+	display:flex;
+	justify-content: space-around;
+	font-size: 12px;
+	margin-top: 16px;
+	padding-bottom : 16px;
+	div{
+		&.active {
+			color: red;
+		}
+		display: inline-block;
+		text-align: center;
+		div .s-icon {
+			font-size: 28px;
+		}
+	}
+}
+.last-o {
+	font-size: 12px;
+	padding: 8px;
+	background: rgb(209, 209, 209);
+	color: rgb(97, 97, 97)
+}
+.order-list {
+	height: 377px;  
+}
 </style>

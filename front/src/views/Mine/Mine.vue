@@ -171,6 +171,9 @@ export default {
 				this.toLogin();
 			}
 		}
+		if(to.path.slice(1) === 'home') {
+			next();
+		}
 	},
 	beforeRouteUpdate(to, from ,next) {
 		console.log(to.path.slice(6));

@@ -51,6 +51,8 @@ export default {
 	width: 100%;
 	height: 100%;
 	position: absolute;
+	top: 0;
+	left: 0;
 	background-color: rgb(255, 255, 255);
 	box-sizing: border-box;
 	padding-top: 48px;
@@ -64,7 +66,7 @@ export default {
 		width: 100%;
 		padding: 12px;
 		box-sizing: border-box;
-		height: calc(100% - 100px);
+		height: 416px;
 	}
 	.showbox {
 		display: flex;

@@ -6,7 +6,8 @@ import orderRouter from './order-router'
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+	{
 		path: '/home',
 		name: 'home',
 		component: () => import('../views/home/Home.vue')
@@ -21,13 +22,13 @@ const routes = [{
 		name: 'test',
 		component: () => import('../views/detail/test.vue')
 	},
-	{
-		path: "/",
-		name: "home",
-		components: {
-			default: () => import( /* webpackChunkName: "about" */ "../views/Home.vue")
-		}
-	},
+	// {
+	// 	path: "/",
+	// 	name: "home",
+	// 	components: {
+	// 		default: () => import( /* webpackChunkName: "about" */ "../views/Home.vue")
+	// 	}
+	// },
 	// 添加路由模块
 	mineRouter,
 	orderRouter
