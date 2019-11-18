@@ -1,7 +1,9 @@
 <template>
 	<div id="app">
 
-		<router-view></router-view>
+		<router-view/>
+		
+		<FootNav />
 
 		<transition :enter-active-class="hasAnimate?'slideInDown':''" leave-active-class="slideOutDown">
 			<component v-if="showCom" :is="comName" />
@@ -13,10 +15,14 @@
 <script>
 import Login from './views/Mine/Login'
 import Regiester from './views/Mine/Regiester'
+import FootNav from './views/lib/FootNav'
+// import Content from './views/lib/Content'
+import './views/font/iconfont.css'
 export default {
 	components: {
 		Login,
-		Regiester
+		Regiester,
+		FootNav
 	},
 	data() {
 		return {
@@ -71,4 +77,3 @@ body,
 	top: 48px;
 	width: 100%;
 }
-</style>

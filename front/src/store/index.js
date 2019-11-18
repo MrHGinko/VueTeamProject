@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import mine from "./mine"
 import order from "./order"
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
         state: {

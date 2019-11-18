@@ -4,14 +4,39 @@ import VueRouter from "vue-router";
 import mineRouter from './mine-router'
 import orderRouter from './order-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
-const routes = [
-
-        {
-                path: "/",
-                name: "home",
-                components: { default: () =>import(/* webpackChunkName: "about" */ "../views/Home.vue") }
+const routes = [{
+		path: '/home',
+		name: 'home',
+		component: () => import('../views/home/Home.vue')
+	},
+	{
+		path: '/order',
+		name: 'order',
+		component: () => import('../views/order/Order.vue')
+	},
+	{
+		path: '/mine',
+		name: 'mine',
+		component: () => import('../views/my/Mine.vue')
+	},
+	{
+		path: '/detail',
+		name: 'detail',
+		component: () => import('../views/detail/Detail.vue')
+	},
+	{
+		path: '/test',
+		name: 'test',
+		component: () => import('../views/detail/test.vue')
+	},
+	{
+		path: "/",
+		name: "home",
+		components: {
+			default: () => import( /* webpackChunkName: "about" */ "../views/Home.vue")
+		}
 	},
 	// 添加路由模块
 	mineRouter,
@@ -19,9 +44,8 @@ const routes = [
 ];
 
 const router = new VueRouter({
-        mode: "history",
-        base: process.env.BASE_URL,
-        routes
-});
+	mode: 'history',
+	routes
+})
 
-export default router;
+export default router
