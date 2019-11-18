@@ -32,8 +32,6 @@ server.use(express.urlencoded({ urlencoded: false }));
 server.use(express.json());
 
 server.use("/api/user", require("./routers/userRouter"));
-server.use("/api/food", require("./routers/foodRouter"));
-
 // 以上 添加数据请求
 
 server.use((req, res, next) => {
