@@ -1,5 +1,5 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 
-const center = new Vue();
+// const center = new Vue();
 
-export default center;
+// export default center;

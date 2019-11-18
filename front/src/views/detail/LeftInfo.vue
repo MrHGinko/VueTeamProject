@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import LeftInfoBox from '../../plugin/LeftInfo-scroll'
+import LeftInfoBox from '../../components/LeftInfo-scroll'
 export default {
     components:{
         LeftInfoBox

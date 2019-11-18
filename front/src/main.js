@@ -4,10 +4,15 @@ import router from './router'
 import store from './store'
 import 'lib-flexible/flexible'
 import pubsub from './pubub'
+import plugin from './plugin'
+
 
 import './utils/common.scss'
 
+
 Vue.config.productionTip = false;
+
+Vue.use(plugin);
 
 Vue.prototype.$pubsub = pubsub;
 

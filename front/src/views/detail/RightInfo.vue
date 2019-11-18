@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import RightInfoBox from '../../plugin/RightInfo-scroll'
+import RightInfoBox from '../../components/RightInfo-scroll'
 export default {
     components:{
         RightInfoBox

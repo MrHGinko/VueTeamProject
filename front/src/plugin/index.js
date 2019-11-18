@@ -2,11 +2,13 @@ import {
 	Icon,
 	Toast
 } from "vant";
-import ScrollBox from "../components/scroll-box.vue";
+
 import HeaderBar from "../components/header-bar.vue";
 import Loading from "../components/loading.vue";
-import RightInfoBox from "./RightInfo-scroll.vue";
-import LeftInfoBox from "./LeftInfo-scroll.vue";
+
+import ScrollBox from '../components/scroll-box.vue'
+import LeftInfoBox from "../components/LeftInfo-scroll.vue";
+import RightInfoBox from "../components/RightInfo-scroll.vue";
 
 export default {
 	install(Vue) {
@@ -17,15 +19,11 @@ export default {
 		});
 		Vue.prototype.$Toast = Toast;
 
-
-		Vue.component(ScrollBox.name, ScrollBox);
 		Vue.component(HeaderBar.name, HeaderBar);
 		Vue.component(Loading.name, Loading);
-		Vue.component(RightInfoBox.name, RightInfoBox);
 
+		Vue.component(ScrollBox.name, ScrollBox);
 		Vue.component(LeftInfoBox.name, LeftInfoBox);
-
-		//event bus 发布订阅
-		Vue.$center = Vue.prototype.$center = new Vue();
+		Vue.component(RightInfoBox.name, RightInfoBox);
 	}
 }

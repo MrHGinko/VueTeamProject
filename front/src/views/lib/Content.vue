@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import scrollBox from '../../plugin/scroll-box'
+import scrollBox from '../../components/scroll-box'
 export default {
     components:{
         scrollBox

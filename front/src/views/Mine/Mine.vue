@@ -189,8 +189,11 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+#mine {
+
+}
 .content {
-	position: absolute;
+	position: relative;
 	top: 48px;
 	background: rgb(211, 211, 211);
 }
