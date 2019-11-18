@@ -14,7 +14,8 @@
             <h3 class="line-ellipsis">{{item.showInfo}}</h3>
             </div>
             <div class="liright">
-                <router-link to="/movie/detail"><p @click="goDetail(item.id)">{{item.pd}}</p></router-link>      
+                <router-link to="/movie/detail"><p @click="goDetail(item.id,item.name)" >{{item.pd}}</p></router-link>    
+                  </Detail :title="title">
             </div>
           </li>
           </ul>
@@ -46,14 +47,20 @@ data () {
   page:1,
   pageSize:10,
   ticket:'',
-  ac:false
+  ac:false,
+  title:''
   }
 },
 methods:{
 
-  goDetail(id){
+  
+
+  goDetail(id,title){
+    console.log(title)
       this.$router.push(`/movie/detail/${id}`);
-      this.$routerrouter.go()  
+      this.$routerrouter.go();
+     
+      this.title = title; 
   },
   
 
@@ -145,7 +152,6 @@ computed: {
 
 
 mounted () {
-
    /*vue实例挂载完成，data.message成功渲染。*/
   this.getData()
   

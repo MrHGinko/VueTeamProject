@@ -26,7 +26,12 @@ export default {
             path: 'detail/:id',
             props: true,
             component: () =>
-                import ('../../views/Movie/NowPlaying/detail/detail')
+                import ('../../views/Movie/NowPlaying/detail/detail'),
+            children: [{
+                path: 'cinema',
+                component: () =>
+                    import ('../../views/Movie/NowPlaying/detail/cinema')
+            }],
         }
     ]
 }
