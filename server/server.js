@@ -20,7 +20,7 @@ server.use(
                 secret: "hello world",
                 name: "login_session",
                 cookie: {
-                        maxAge: 1000 * 60 * 60 * 24 * 30 // 1 week
+                        maxAge: 1000 * 60 * 60 * 24  // 1 Day
                 },
                 store: store,
                 resave: true,
@@ -32,6 +32,7 @@ server.use(express.urlencoded({ urlencoded: false }));
 server.use(express.json());
 
 server.use("/api/user", require("./routers/userRouter"));
+
 // 以上 添加数据请求
 
 server.use((req, res, next) => {
@@ -45,6 +46,9 @@ server.use((req, res, next) => {
                 });
         }
 });
+
+server.use("/api/userinfo", require("./routers/infoRouter"));
+server.use("/api/order", require("./routers/orderRouter"));
 
 // 连接数据库
 mongoose.connect(

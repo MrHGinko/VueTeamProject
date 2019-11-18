@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // 引入路由模块
-import foodRouter from './food-router';
+import mineRouter from './mine-router'
+import orderRouter from './order-router'
 
 Vue.use(VueRouter);
 
@@ -13,7 +14,8 @@ const routes = [
                 components: { default: () =>import(/* webpackChunkName: "about" */ "../views/Home.vue") }
 	},
 	// 添加路由模块
-	foodRouter,
+	mineRouter,
+	orderRouter
 ];
 
 const router = new VueRouter({

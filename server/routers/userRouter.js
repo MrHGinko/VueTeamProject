@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../model/User");
+const UserInfo = require("../model/UserInfo");
 const router = new express.Router();
 
 // 注册
@@ -7,10 +8,13 @@ router.post("/regiester", (req, res) => {
         const { tel, password } = req.body;
         User.add(tel, password)
                 .then(userInfo => {
-                        res.json({
-                                code: 0,
-                                message: "ok"
-                        });
+			UserInfo.add(tel, tel)
+			.then(()=>{
+				res.json({
+					code: 0,
+					message: "ok"
+				});
+			})
                 })
                 .catch(error => {
                         res.json({
@@ -22,9 +26,9 @@ router.post("/regiester", (req, res) => {
 
 // 登录
 router.post("/login", (req, res) => {
-        const { tel, value } = req.body;
+	const { tel, password } = req.body;
         //密码登录
-        User.findByTelAndPsd(tel, value)
+        User.findByTelAndPsd(tel, password)
                 .then(result => {
                         if (result) {
                                 req.session.userInfo = result;
@@ -43,6 +47,7 @@ router.post("/login", (req, res) => {
                         res.json({ code: -2, message: error.message });
                 });
 });
+
 
 // 检查登录是否过期
 router.get("/check_login", (req, res) => {

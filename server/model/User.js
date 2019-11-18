@@ -14,7 +14,6 @@ const User = mongoose.model(
         })
 );
 
-// 新增
 module.exports.add = async (tel, password) => {
         const result = await User.findOne({ tel });
         if (result) {
@@ -25,7 +24,6 @@ module.exports.add = async (tel, password) => {
         }
 };
 
-// 查询
 module.exports.findByTel = async tel => {
         return await User.findOne({ tel });
 };
