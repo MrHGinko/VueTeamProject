@@ -16,7 +16,7 @@ export default {
 			click: true,
 			mouseWheel: true,
     			scrollbars: true,
-			bounce: false,
+			bounce: true,
 			probeType: 3
 		});
 		

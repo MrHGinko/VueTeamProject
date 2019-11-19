@@ -10,7 +10,7 @@
 		</div>
 		<div class="i-name">
 			<p> 积分: </p>
-			<input type="text" :value="point" disabled>
+			<input type="text"  v-model="point" disabled>
 		</div>
 
 		<button v-if="isUpdate" class="btn" @click="reqChange()"> 确认修改 </button>
@@ -68,6 +68,7 @@ export default {
 			let result = await this.$store.dispatch('mine/userChangeInfo',{
 				nickName: this.nickName,
 				balance: this.balance,
+				point: this.point
 			})
 			let fresh = await this.$store.dispatch('mine/refreshData');
 			console.log(result);

@@ -9,27 +9,47 @@
 		<p class="line">推荐优惠券</p>
 
 		<scroll-box  class="pointList">	
-			<pointGood />
-			<pointGood />
-			<pointGood />
-			<pointGood />
-			<pointGood />
+			<pointGood @buy="handleBuy" v-for="(item, index) in 4" :key="index"/>
 		</scroll-box>
+
+		<van-popup
+			closeable
+			v-model="isShow"
+			position="left"
+			:style="{ width: '72%', height: '100%' }"
+		> <buyMenu v-model="isShow" :needPoint="needPoint"/> </van-popup>
+
 	</div>
 </template>
 
 <script>
 import pointGood from './pointGood'
+import buyMenu from '../m-component/buyMenu'
+import {Popup} from 'vant'
 export default {
 	components: {
-		pointGood
+		pointGood,
+		[Popup.name]: Popup,
+		buyMenu
 	},	
+	data() {
+		return {
+			isShow:false,
+			needPoint: null,
+		}
+	},
 	computed: {
 		point() {
 			return this.$store.state.mine.userInfo.point;
 		}
 	},
-
+	methods: {
+		handleBuy(needPoint) {
+			this.needPoint = needPoint;
+			this.isShow = true;
+			console.log(needPoint);
+		}
+	}
 }
 </script>
 

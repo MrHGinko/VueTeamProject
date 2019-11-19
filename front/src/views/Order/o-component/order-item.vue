@@ -38,7 +38,6 @@ export default {
 		},
 	},
 	methods: {
-
 		getDate(orderDate) {
 			let date = new Date(orderDate);
 			let time = date.getHours()+" : "+date.getMinutes() +" "+date.getFullYear() + '-' + (date.getMonth()+1) +'-' + (date.getDate()+1) ;

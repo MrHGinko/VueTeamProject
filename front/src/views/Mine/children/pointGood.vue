@@ -1,12 +1,12 @@
 <template>
 	<div id="point-good">
-		<div class="good" @click="topayPoint(randomPoint[0])">
-			<div class="pic"></div>
-			<p class="p-name">name {{randomPoint[0]}}</p>
+		<div  class="good" @click="topayPoint(randomPoint[0])">
+			<div class="pic">图片信息</div>
+			<p class="p-name">点餐优惠券 {{randomPoint[0]}}</p>
 		</div>
 		<div class="good" @click="topayPoint(randomPoint[1])">
-			<div class="pic"></div>
-			<p class="p-name">name {{randomPoint[1]}}</p>
+			<div class="pic">图片信息</div>
+			<p class="p-name">话费优惠券 {{randomPoint[1]}}</p>
 		</div>
 	</div>
 </template>
@@ -15,7 +15,7 @@
 export default {
 	data() {
 		return {
-
+			
 		}
 	},
 	computed: {
@@ -24,27 +24,8 @@ export default {
 		},
 	},
 	methods:{
-		async topayPoint(need) {
-			console.log(need);
-			// this.$store.commit('setLoading', true);
-			// if(this.can) {
-			// 	// 积分足够
-			// 	let result = await this.$store.dispatch('mine/userChangeInfo',{
-			// 		point: Number(this.$store.state.mine.userInfo.point - need),
-			// 	})
-
-			// 	//重新获取状态
-			// 	let fresh = await this.$store.dispatch('mine/userGetInfo');
-			// 	this.$store.commit('mine/setUserInfo', fresh.data[0]);
-
-			// 	this.$Toast('付款成功');
-			// 	this.$store.commit('setLoading', false);
-			// 	this.$emit('input', false);
-			// } else {
-			// 	this.$Toast('您的余额不足');
-			// 	this.$store.commit('setLoading', false);
-			// 	this.$emit('input', false);
-			// }
+		topayPoint(point) {
+			this.$emit('buy', point);
 		},
 	}
 }
