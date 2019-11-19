@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
-      <!-- <router-view></router-view> -->
-       <app-header :hasBack="true" :title="title" class="app_de"></app-header>
+     
+       <app-header :hasBack="true" :title="arr1[0].nm " class="app_de"></app-header>
        <div class="detail_content">
             <app-scroll class="content" >
           <ul>
@@ -15,24 +15,21 @@
 ></video-player>
  <img :src="item.jpgUrl" alt="">
             <div class="licenter">
-            <h1>{{item.nm}}</h1>
-            <p >观众评：<i>{{item.sc}}</i></p>
+            <h1>影片名：{{item.nm}}</h1>
+            <h5 >观众评：<i>{{item.sc}}</i></h5>
             <span class="line-ellipsis">主演：{{item.star}}</span>
-            <h3 class="line-ellipsis">{{item.showInfo}}</h3>
-            </div>
-            <div class="liright">
-                <router-link to="/movie/detail"><p @click="goDetail(item.id)">{{item.pd}}</p></router-link>      
+            <h3  class="line-ellipsis " ref="h3" :class="classVal">详情信息：{{item.info}}</h3>
             </div>
           </li>
           </ul>
-          
         </app-scroll>
         <div class="goumai">
-           <!-- <router-link to="/movie/detail/cinema"><h1>特惠购票</h1></router-link> -->
+           <router-link to="/movie/detail/cinema"><h2>我想购票</h2></router-link>
+           
        </div>
-       
+    <p @click="zkAction">{{iszk}}</p>
        </div>
-       
+          <router-view></router-view> 
   </div>
 </template>
 
@@ -49,12 +46,13 @@ export default {
   },
     props: {
         id: String,
-        title:String,
+        // title:String,
     },
-   
     data () {
         return {
+            classVal:'h3css',
             value:'',
+            iszk:'展开',
             arr:[],
             arr1:[],
             playerOptions : {
@@ -89,14 +87,27 @@ export default {
     },
     methods: {
 
+
+        zkAction(){
+
+            if(this.iszk == "展开"){
+                 this.classVal = "h3css2";
+                 this.iszk = "关闭";
+            }else if(this.iszk == "关闭"){
+                 this.classVal = "h3css";
+                 this.iszk = "展开";
+            }
+            
+            
+        },
     
           requestData(){
 
-        axios.get('/static/movie_list_detail.json', { baseURL: 'http://localhost:8080' })
+        axios.get('/static/movie_list_detail.json', { baseURL: 'http://localhost:8081' })
             .then(response => {
          console.log(response.data.detailMovie[0].vd)
           let ls = response.data.detailMovie;
-
+                console.log(ls)
    this.arr =  ls.map(element => {
          return {
            id:element.id,
@@ -108,11 +119,12 @@ export default {
            star:element.star,
            wish:element.wish,
             video:element.vd,
+            info:element.dra,
          }
   });
+   
 
-
-
+    console.log(this.arr1)
      this.arr.map(element=>{        
          this.searcElement(element);     
       })
@@ -125,8 +137,7 @@ export default {
     },
    
    searcElement(element){
-         console.log(this.value)
-         console.log(this.arr1)
+      
       if(element.id == this.value){
          this.arr1.push(element)
       }
@@ -156,6 +167,47 @@ export default {
       top: 43px;
       bottom: 0;
       width: 100%;
+      h1{
+          padding: 5px;
+      }
+      p{
+          padding: 5px;
+          top: 283px;
+          right: 0;
+          position: absolute;
+      }
+      h5{
+          padding: 5px;
+      }
+      span{
+          padding: 5px;
+      }
+      .h3css{
+             display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    position: relative;
+    padding: 5px;
+    line-height: 27px;
+      }
+      .h3css2{
+           display: -webkit-box;
+    -webkit-box-orient: vertical;
+   
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    position: relative;
+    padding: 5px;
+    line-height: 27px;
+      }
+
+     
   }
   .goumai{
       position: absolute;
@@ -168,11 +220,16 @@ export default {
       font-size: 30px;
       text-align: center;
       line-height: 66px;
-      h1{
-          padding: 16px;
-          box-sizing: border-box;
-        
-      }
+      h2{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+        color: #fff;
+      }    
   }
 
 </style>

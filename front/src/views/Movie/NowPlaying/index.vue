@@ -67,7 +67,7 @@ methods:{
    // 获取数据
      getData(){
            var that=this;
-           axios.get('/static/movie_list.json',{baseURL: 'http://localhost:8080'} ,{params:{pageNum:that.page,pageSize:that.pageSize}})
+           axios.get('/static/movie_list.json',{baseURL: 'http://localhost:8081'} ,{params:{pageNum:that.page,pageSize:that.pageSize}})
 　　　　 .then(function(data){
                           if(data.data.success){
  　　　　　　　　  //这一步是判断你当前请求的这一页数据是不是最后一页，如果是最后一页就不能请求了（这个根据后端给的接口判断，只要能判断出就行了，如果是最后一页给that.noDate=true）
@@ -105,7 +105,7 @@ methods:{
 
 /* 请求本地文件，渲染页面 */
   requestData(){
- axios.get('/static/movie_list.json', { baseURL: 'http://localhost:8080' })
+ axios.get('/static/movie_list.json', { baseURL: 'http://localhost:8081' })
     .then(response => {
       // console.log(response.data.movieList)
         let ls = response.data.movieList;

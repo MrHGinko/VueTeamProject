@@ -4,7 +4,7 @@
     <app-header  class="mymovie" title="猫眼电影"></app-header>
     <div class="nav"> 
        <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
-               <router-link class="tab" to="/movie/city"> 城市</router-link>
+               <router-link class="tab pad" to="/movie/city"> 城市<div class="arrow"></div></router-link>
     </transition> 
       <router-link class="tab" to="/movie/NowPlaying"> 正在热映</router-link>
       <router-link class="tab" to="/movie/commingsoon">即将上映</router-link>
@@ -74,5 +74,40 @@ export default {
       border-bottom: 2px solid blue;
       color: #f03d37;
     }
+    .pad{
+      i{
+       transform:skew(7deg); 
+      }
+    }
+    .arrow {
+    display: block;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    bottom: 15px;
+    left: 20%;
+    margin-left: -11px;
+    border: 3px solid transparent;
+    border-bottom: 3px solid #000;
+    border-right: 3px solid #000;
+    z-index: 99;
+    opacity: .8;
+    transform: rotate(45deg);
+    animation: arrow 1.5s infinite ease-in-out;
+}
+  
+@keyframes arrow {
+0% {
+opacity:0;
+-webkit-transform:translate(0, 0px) rotate(45deg)
+}
+50% {
+opacity:1;
+-webkit-transform:translate(0, -3px) rotate(45deg)
+}
+100% {
+opacity:0;
+-webkit-transform:translate(0, -7px) rotate(45deg)
+}}
 </style>
 
