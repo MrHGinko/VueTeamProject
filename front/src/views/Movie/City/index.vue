@@ -22,70 +22,32 @@
   </div>
 </template>
 <script>
+import { location } from "./city"
 export default {
 
-    data() {
-    let self = this;
+methods: {
+  data () {
     return {
-      center: [121.59996, 31.197646],
-      zoom: 17,
-      lng: 0,
-      lat: 0,
-      loaded: false,
-      plugin: [   //一些工具插件
-        {
-          pName: 'Geolocation',   //定位
-          events: {
-            init(o) {
-              // o 是高德地图定位插件实例
-              o.getCurrentPosition((status, result) => {
-                if (result && result.position) {
-                  self.lng = result.position.lng;             //设置经度
-                  self.lat = result.position.lat;             //设置维度
-                  self.center = [self.lng, self.lat];         //设置坐标
-                  self.loaded = true;                         //load
-                  self.$nextTick();                           //页面渲染好后
-                }
-              })
-            }
-          }
-        },
-        {
-          pName: 'ToolBar',  //工具栏
-          events: {
-            init(instance) {
-              // console.log(instance);
-            }
-          }
-        },
-        {
-          pName: 'OverView',  //鹰眼
-          events: {
-            init(instance) {
-              // console.log(instance);
-            }
-          }
-        },
-        {
-          pName: 'MapType',  //地图类型
-          defaultType: 0,
-          events: {
-            init(instance) {
-              // console.log(instance);
-            }
-          }
-        }
-      ]
+      title:[],
     }
   },
-  methods: {
-    //把经纬度传到父组件
-    sendlnglat (){ 
-      this.$emit('register', this.lng, this.lat)
-    }
-  }
-
-
+  getLocation() {
+      let _that = this;
+      let geolocation = location.initMap("map-container"); //定位
+      AMap.event.addListener(geolocation, "complete", result => {
+        _that.lat = result.position.lat;
+        _that.lng = result.position.lng;
+        _that.province = result.addressComponent.province;
+        _that.city = result.addressComponent.city;
+        _that.district = result.addressComponent.district;
+      });
+    },
+},
+mounted () {
+  this.getLocation();
+  console.log(this.title)
+  
+}
 
 
 }

@@ -60,14 +60,14 @@ methods: {
     this.value = this.ls;
     console.log(this.value)
     this.requestData();
-     this.searchMethod();
+    //  this.searchMethod();
   },
    requestData(){
- axios.get('/static/movie_list.json', { baseURL: 'http://localhost:8080' })
+ axios.get('/static/movie_list.json', { baseURL: 'http://localhost:8081' })
     .then(response => {
       // console.log(response.data.movieList)
         let ls = response.data.movieList;
-        console.log(111);
+        console.log(ls);
    this.arr1 =  ls.map(element => {
          return {
            id:element.id,
@@ -83,13 +83,10 @@ methods: {
          }
   });
 
+    console.log(this.arr1)
     this.arr1.map(element=>{
       this.searcElement(element);
     })
-
-
-
-
       let pd = this.arr1.forEach(element => {
          this.pd(element.showInfo)
       });
@@ -109,6 +106,7 @@ methods: {
       }
     },
     searcElement(element){
+      console.log(element)
       if(element.nm == this.value){
          this.searchList.push(element)
       }
