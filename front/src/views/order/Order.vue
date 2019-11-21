@@ -95,18 +95,16 @@ export default {
 					price: 20,
 					orderInfo: [
 						{
-							orderID: 'test1',
 							orderPicurl: '12213',
 							orderName: 'Loving Vincent',
 							orderCount: 2,
-							price: 10,
+							currentPrice: 10,
 						},
 						{
-							orderID: 'test2',
 							orderPicurl: '12213',
 							orderName: 'the Kitter Runner',
 							orderCount: 2,
-							price: 10
+							currentPrice: 10
 						},
 					]
 				}
