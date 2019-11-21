@@ -1,6 +1,6 @@
 <template>
 	<div id="order-item">
-		<span class="pic"> order picUrl </span>
+		<span class="pic"> <img :src="order.orderInfo[0].orderPicurl"> </span>
 		<div class="info">
 			<p class="i-title">
 				<!-- {{ order.orderName }} -->
@@ -99,10 +99,15 @@
 		display: flex;
 		border-bottom: 2px solid rgb(196, 196, 196);
 		.pic {
-			display: inline-block;
-			width: 60px;
-			background: rgb(85, 85, 85);
+			display: flex;
 			color: white;
+			align-items: center;
+			img {
+				height: 60px;
+				vertical-align: middle;
+				transform: translateY(50%);
+				margin-top : -50%;
+			}
 		}
 		.info {
 			flex: 1;

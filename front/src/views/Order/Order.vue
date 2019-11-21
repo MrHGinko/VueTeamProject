@@ -11,7 +11,7 @@
 				</div>
 			</div>
 		</div>
-		<p class="last-o" @click="testAdd()">最近订单</p>
+		<p class="last-o">最近订单</p>
 
 		<!-- v-for 展示最近订单  -->
 		<scroll-box class="order-list">
@@ -87,29 +87,7 @@ export default {
 			this.status = 'all';
 		},  // test OK
 		async testAdd() {
-			let result = await this.$store.dispatch('order/addOrder', 
-				// 'F98', 'Loving Vincent', 'film', 30
-				{
-					shopName: '测试用商店',
-					orderType: 'Food',
-					price: 20,
-					orderInfo: [
-						{
-							orderPicurl: '12213',
-							orderName: 'Loving Vincent',
-							orderCount: 2,
-							currentPrice: 10,
-						},
-						{
-							orderPicurl: '12213',
-							orderName: 'the Kitter Runner',
-							orderCount: 2,
-							currentPrice: 10
-						},
-					]
-				}
-			);
-			this.refreshData();
+			let result = await this.$store.dispatch('order/addOrder',{});
 			console.log(result);
 		},  
 		async HandleChange(id, status) {

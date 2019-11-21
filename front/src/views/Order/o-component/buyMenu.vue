@@ -2,7 +2,17 @@
 	<div id="buymenu">
 		<div class="infoBox">
 			<p>
-				<span class="i-img"> 图片 </span><br />
+				<van-swipe
+					:autoplay="3000"
+					indicator-color="#ff9924"
+				>
+					<van-swipe-item
+						v-for="(item, index) in order.orderInfo"
+						:key="index"
+					>
+						<img class="info-img" :src="item.orderPicurl" />
+					</van-swipe-item>
+				</van-swipe>
 				<span
 					class="i-name"
 					v-for="(item, index) in order.orderInfo"
@@ -19,7 +29,7 @@
 				<span v-else-if="order.orderType == 'Film'"
 					>电影院名称</span
 				><br />
-				{{order.shopName}}
+				{{ order.shopName }}
 				<br />
 				<br />
 				订单编号 <br />
@@ -59,7 +69,12 @@
 </template>
 
 <script>
+	import { Swipe, SwipeItem } from 'vant';
 	export default {
+		components: {
+			[Swipe.name]: Swipe,
+			[SwipeItem.name]: SwipeItem,
+		},
 		props: {
 			orderID: String,
 			value: Boolean,
@@ -82,8 +97,7 @@
 							) {
 								this.order = item;
 								console.log(
-									this
-										.order,
+									this.order,
 								);
 							}
 						},
@@ -218,6 +232,10 @@
 		box-sizing: border-box;
 		padding: 54px 8px;
 		font-size: 14px;
+		.info-img {
+			width: 200px;
+			border: 1px solid rgb(221, 221, 221);
+		}
 		.infoBox {
 			.i-id {
 				color: rgb(139, 139, 139);
@@ -255,9 +273,9 @@
 					margin-bottom: 8px;
 				}
 				.i-name {
-					font-size: 20px;
-					font-style: italic;
+					font-size: 18px;
 					font-weight: bold;
+
 				}
 				.btn {
 					border: none;
