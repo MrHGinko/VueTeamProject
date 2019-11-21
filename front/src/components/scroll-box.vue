@@ -32,7 +32,7 @@ export default {
 <style scoped>
 .scroll-box {
 	width: 100%;
-	height: 100%;
+	/* height: 100%; */
 	overflow: hidden;
 }
 </style>
