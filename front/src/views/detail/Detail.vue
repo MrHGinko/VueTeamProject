@@ -21,7 +21,7 @@
 
     <van-tabs v-model="active" ref="menus" animated line-width="20px" color="#ffd300">
         <van-tab title="点菜">
-            <div class="info" >
+            <div class="info" :style="{height:contentHeight}">
             <LeftInfoBox class="left_info" ref="leftInfo" :style="{height:infoHeight}">
                 <div class="left_info_nav" v-for="(item,index) in shopData" :key="index" @click="navAction(index)" :style="{background:(index == 0 ? '#fff' : '')}">{{item.categoryName}}</div>
             </LeftInfoBox>
@@ -71,7 +71,7 @@
                 <i class="iconfont iconchakanshipinanquandangan-"></i>
                 <i class="iconfont iconarrow-left"></i>
             </div>
-            <div class="time">配送时间 :
+            <div class="time">配送时间 : {{this.ShopInfo.shipping_time}}
                 <i class="iconfont iconshijian"></i>
             </div>
             <div class="announcement">麦辣鸡腿汉堡脆辣带劲限时特惠9.9元
@@ -89,9 +89,9 @@
                 </div>
             </div>
             <div class="privilege">
-                <div class="privilegeInfo">
-                    <img class="privilegeInfo_img" src="" alt="">
-                    <span class="privilegeInfo_">该商家支持在线支付</span>
+                <div class="privilegeInfo" v-for="(item,index) in ShopInfo.discounts2" :key="index">
+                    <img class="privilegeInfo_img" :src="`${item.iconUrl}`" alt="">
+                    <span class="privilegeInfo_ iconfont" v-html="item.info"></span>
                 </div>
             </div>
         </van-tab>
@@ -101,8 +101,17 @@
             <i class="iconfont icongouwuchekong"></i>
             <span class="num" v-show="commodities.length==0?false:true">{{commodities.length}}</span>
         </div>
-        <div class="totalPrices">￥{{totalPrices}} {{totalOriginPrice}}</div>
-        <div class="min_price" v-if="commodities.length==0?true:false">￥0起送</div>
+        <div class="totalPrices">
+            <div class="addDispatchPrice iconfont" v-html="this.ShopInfo.shippingFeeTip" v-if="commodities.length == 0 ? true : false"></div>
+            <div class="totalPrices_">
+                <div class="Prices_" v-if="commodities.length == 0 ? false:true">
+                    <span class="totalCurrentPrice">￥{{totalPrices}}</span>
+                    <span class="totalOriginPrice">￥{{totalOriginPrice}}</span>
+                </div>
+                <span class="dispatchPrice iconfont" v-html="this.ShopInfo.shippingFeeTip"></span>
+            </div>
+        </div>
+        <div class="min_price iconfont" v-if="commodities.length==0?true:false" v-html="this.ShopInfo.minPriceTip"></div>
         <router-link class="pay" @click="toPay" v-if="commodities.length==0?false:true" to ="/pay">去结算</router-link>
     </div>
     <van-popup v-model="show" class="shoppingDetail"  position="bottom"
@@ -230,11 +239,12 @@ export default {
             // window.console.log(this.commodities);
         },
         reduceCart(commodity){
-            this.commodities.forEach(item=>{
+            this.commodities.forEach((item,index)=>{
                 if(item == commodity){
                     item.saleVolume -= 1;
-                    if(item.saleVolume < 0){
+                    if(item.saleVolume <= 0){
                         item.saleVolume = 0;
+                        this.commodities.splice(index,1);
                     }
                 }
             })
@@ -296,9 +306,9 @@ export default {
         this.ShopInfo = this.$store.getters['shoppingCart/getShopInfo'];
         this.requestData();
         // this.$center.$on('onScroll', this.listener);
-        window.console.log(this.ShopInfo);
-      
-
+        // window.console.log(this.ShopInfo);
+        // window.console.log(this.ShopInfo.discounts2);
+        // window.console.log(this.ShopInfo.minPriceTip.substring(4))
     },
     mounted(){
         this.infoHeight = this.getHeight();
@@ -409,6 +419,7 @@ h1,h2,h3,h4,h5,h6{
     .info{
         width: 100%;
         // height: 100%;
+        background: #fff;
         .left_info{
             width: 80px;
             height: 100%;
@@ -587,6 +598,44 @@ h1,h2,h3,h4,h5,h6{
             height: 50px;
             font-size: 14px;
             color: #999999;
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column;
+            .addDispatchPrice{
+                font-size: 14px;
+                color: #999;
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+            }
+            .totalPrices_{
+                width: 100%;
+                height: 50px;
+                .Prices_{
+                    width: 100%;
+                    height: 28px;
+                    .totalCurrentPrice{
+                        font-size: 24px;
+                        color: #fff;
+                        line-height: 28px;
+                        float: left;
+                        margin-right: 5px;
+                    }
+                    .totalOriginPrice{
+                        float: left;
+                        font-size: 12px;
+                        color: #999;
+                        line-height: 14px;
+                        margin-top: 12px;
+                        text-decoration: line-through;
+                    }
+                }
+                .dispatchPrice{
+                    font-size: 12px;
+                    line-height: 12px;
+                    display: inline-block;
+                }
+            }
         }
         .pay{
             position: absolute;
@@ -741,6 +790,7 @@ h1,h2,h3,h4,h5,h6{
             .privilegeInfo{
                 margin-bottom: 5px;
                 line-height: 20px;
+                display: flex;
                 .privilegeInfo_img{
                     width: 15px;
                     height: 15px;
@@ -752,6 +802,7 @@ h1,h2,h3,h4,h5,h6{
                     color: #333;
                     font-size: 14px;
                     margin-left: 7px;
+                    flex: 1;
                 }
             }
         }

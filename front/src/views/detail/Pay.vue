@@ -14,6 +14,7 @@
           <span class="quantity">{{item.saleVolume}}</span>
           <span class="price">￥{{item.currentPrice}}</span>
         </div>
+        <div class="dispatchPrice iconfont" v-html="this.ShopInfo.shippingFeeTip"></div>
       </div>
 
     </content>
@@ -31,7 +32,7 @@ export default {
   data(){
     return{
       commodities:[],
-      ShopInfo:[]
+      ShopInfo:[],
     }
   },
   components:{
@@ -58,14 +59,31 @@ export default {
       history.back();
     },
     submitOrder(){
-
+      let allInfo = [];
+      this.commodities.forEach((item, index)=> {
+        allInfo[index] = {
+          orderPicurl : item.bigImageUrl,
+          orderName : item.spuName,
+          currentPrice: item.currentPrice,
+          orderCount: item.saleVolume,
+        }
+      })
+      // this.$store.
+      let info = {
+          shopName : this.ShopInfo.shopName,
+          orderType : 'Food',
+          price : this.totalPrice,
+          orderInfo: allInfo,
+      };
+      this.$store.commit('shoppingCart/setInfo',info);
+      // console.log(info);
     }
   },
   created() {
     this.commodities = this.$store.getters['shoppingCart/getCartInfo'];
     this.ShopInfo = this.$store.getters['shoppingCart/getShopInfo'];
-    window.console.log(this.commodities);
-    window.console.log(this.ShopInfo);
+    // window.console.log(this.commodities);
+    // window.console.log(this.ShopInfo);
   },
 }
 </script>
@@ -155,6 +173,14 @@ export default {
         text-align: center;
         min-width: 40px;
       }
+    }
+    .dispatchPrice{
+      width: 100%;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      color: #333;
+      text-align: right;
     }
   }
   .footer{

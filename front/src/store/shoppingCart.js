@@ -3,7 +3,8 @@ import Http from "../utils/Http";
 
 const state = {
 	commodities:[],
-	ShopInfo:{}
+	ShopInfo:{},
+	info:{}
 };
 
 const getters = {
@@ -21,6 +22,9 @@ const mutations = {
     },
 	sendShopInfo(state,data){
 		state.ShopInfo = data;
+	},
+	setInfo(state,data){
+		state.info = data;
 	}
 };
 
