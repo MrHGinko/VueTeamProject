@@ -3,10 +3,10 @@
   <router-view></router-view>
   <app-header :hasBack="true" title="附近的电影院"></app-header>
   <app-scroll class="cinemas_content" >
-  
+  <div >
           
           <router-link :to= "ids2">
-          <div class="licontents" v-for="(item,index) in arr"  :key="index"  v-lazy="item" @click="cinemaAction(index)"  >
+          <div class="licontents" v-for="(item,index) in arr"  :key="index"  v-lazy="item" @click="cinemaAction(item.id)"  >
             <!-- <span>{{item.id}}</span> -->
             <div class="licenter">
             <h1 class="h11">{{item.nm}}</h1>
@@ -16,7 +16,7 @@
             </div>
           </div>  
       </router-link>
-  
+  </div>
   </app-scroll> 
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
             value:'',
             arr:[],
             arr1:[],
+            indexs:null
     }
   },
   computed: {
@@ -40,12 +41,16 @@ export default {
   },
 
   methods: {
+    /* vuex管理影院id */
     cinemaAction(index){
-        console.log(index);
         let idss = window.location.href;
         let ass = idss.indexOf(1);
         let bss = idss.slice(ass,ass+7);
         this.value = bss;
+        // console.log(index)
+        this.indexs = index;
+        // console.log('点击选择影院')
+        this.$store.commit('getCinemaSelect', this.indexs);
     }, 
 
         requestData(){
@@ -77,7 +82,7 @@ export default {
   },
   created () {
     this.requestData();
-    this.cinemaAction();
+    this.cinemaAction()
   }
 
 }

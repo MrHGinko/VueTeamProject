@@ -10,9 +10,14 @@ export default new Vuex.Store({
         username: "?hello",
         moviedata: "购买",
         selectSet: '',
-        Result_Z: {}
+        Result_Z: {},
+        cinemaSelect: '123'
     },
-    mutations: {},
+    mutations: {
+        getCinemaSelect(state, value) {
+            state.cinemaSelect = value;
+        }
+    },
     actions: {},
     modules: {
         food,

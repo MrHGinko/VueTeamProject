@@ -138,8 +138,6 @@ export default {
     }).catch(error => {
         window.console.log(error);
     })
-
-    
     },
    
    searcElement(element){
