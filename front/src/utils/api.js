@@ -1,4 +1,5 @@
 // food页面的json渲染数据
+const HOST = 'DNAIO:7889'
 
 const FOOD_API = '/api/food/food_index';
 
