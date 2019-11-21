@@ -1,6 +1,6 @@
 <template>
   <div class="shops">
-      <router-link class="shop" v-for="(item,index) in shopsData" :key="index" to="detail">
+      <div class="shop" v-for="(item,index) in shopsData" :key="index" @click="goDetail(item)">
           <img :src="`${item.picUrl}`" alt="">
           <div class="detail">
               <h3>{{item.shopName}}</h3>
@@ -27,7 +27,7 @@
                   <span class="discountDetail iconfont" v-html="item.info"></span>
               </p>
           </div>
-      </router-link>
+      </div>
       <router-view></router-view>
   </div>
   
@@ -49,24 +49,34 @@ export default {
         let Data = response.data.data.data.shopList;
           Data.forEach((item,index)=>{
             this.shopsData.push(item);
+            // window.console.log(item);
         })
-        window.console.log(this.shopsData);
       }).catch(error=>{
         window.console.log(error);
       })
+    //   window.console.log(this.$router);
     },
+    goDetail(item){
+        this.$store.commit('shoppingCart/sendShopInfo',item);
+        this.$router.push(`detail/${item.mtWmPoiId}`);
+    }
   },
   created(){
     this.requestData();
+    // window.console.log(this.shopsData);
   }
 }
 </script>
 <style lang="scss" scoped>
+*{
+    margin: 0;
+    padding: 0;
+}
 .shops{
     width: 100%;
     .shop{
         width: 100%;
-        height: 108px;
+        // height: 120px;
         box-sizing: border-box;
         padding: 0 10px;
         margin: 10px 0 25px 0;
@@ -79,10 +89,11 @@ export default {
             margin-right: 10px;
         }
         .detail{
-            height: 108px;
+            // height: 108px;
             flex: 1;
             h3{
-                height: 22px;
+                height: 18px;
+                line-height: 18px;
                 font-size: 16px;
                 font-weight: 600;
             }
@@ -91,6 +102,7 @@ export default {
                 font-size: 12px;
                 line-height: 16px;
                 display: flex;
+                margin-top: 4px;
                 .left{
                     height: 16px;
                     overflow: hidden;
@@ -131,6 +143,7 @@ export default {
             .price{
                 height: 16px; 
                 font-size: 12px;
+                margin-top: 4px;
                 .iconfont{
                     font-size: 12px;
                     margin-right: 4px;
@@ -158,5 +171,4 @@ export default {
         }
     }
 }
-
 </style>

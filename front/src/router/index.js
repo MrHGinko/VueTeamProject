@@ -13,14 +13,15 @@ const routes = [
 		component: () => import('../views/home/Home.vue')
 	},
 	{
-		path: '/detail',
+		path: '/detail/:id',
 		name: 'detail',
+		props:true,
 		component: () => import('../views/detail/Detail.vue')
 	},
 	{
-		path: '/test',
-		name: 'test',
-		component: () => import('../views/detail/test.vue')
+		path: '/pay',
+		name: 'pay',
+		component: () => import('../views/detail/Pay.vue')
 	},
 	// {
 	// 	path: "/",

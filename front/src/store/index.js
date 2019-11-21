@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import mine from "./mine"
 import order from "./order"
+import shoppingCart from "./shoppingCart"
 
 Vue.use(Vuex)
 
@@ -29,6 +30,7 @@ export default new Vuex.Store({
 	},
         modules: {
 		mine,
-		order
+		order,
+		shoppingCart
         }
 });
