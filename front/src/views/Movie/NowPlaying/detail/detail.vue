@@ -124,6 +124,7 @@ export default {
            star:element.star,
            wish:element.wish,
             video:element.vd,
+            ver:element.ver,
             info:element.dra,
          }
   });
@@ -152,7 +153,7 @@ export default {
     created (){
         this.value = this.$route.params.id;
         this.requestData();
-        this.ids = `/movie/detail/${this.value}/cinemas`;
+        // this.ids = `/movie/detail/${this.value}/cinemas`;
         
     }
 }

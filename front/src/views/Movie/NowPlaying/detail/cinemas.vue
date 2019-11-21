@@ -1,10 +1,12 @@
 <template>
 <div class="cinemas">
+  <router-view></router-view>
   <app-header :hasBack="true" title="附近的电影院"></app-header>
   <app-scroll class="cinemas_content" >
-  <div >
-    
-          <div class="licontents" v-for="(item,index) in arr"  :key="index"  v-lazy="item" @click="cinemaAction(index)">
+  
+          
+          <router-link :to= "ids2">
+          <div class="licontents" v-for="(item,index) in arr"  :key="index"  v-lazy="item" @click="cinemaAction(index)"  >
             <!-- <span>{{item.id}}</span> -->
             <div class="licenter">
             <h1 class="h11">{{item.nm}}</h1>
@@ -13,8 +15,8 @@
             <h3  class="h33 " ref="h33" :class="classVal">距离你所在的位置：<em>{{item.distance}}</em></h3>
             </div>
           </div>  
-      
-  </div>
+      </router-link>
+  
   </app-scroll> 
   </div>
 </template>
@@ -31,15 +33,20 @@ export default {
             arr1:[],
     }
   },
+  computed: {
+    ids2(){
+      return `/movie/detail/${this.value}/selectcinema` 
+    }
+  },
 
   methods: {
     cinemaAction(index){
         console.log(index);
         let idss = window.location.href;
-         let ass = idss.indexOf(1);
-          let bss = idss.slice(ass,ass+7);
-          
-    },
+        let ass = idss.indexOf(1);
+        let bss = idss.slice(ass,ass+7);
+        this.value = bss;
+    }, 
 
         requestData(){
 
@@ -70,6 +77,7 @@ export default {
   },
   created () {
     this.requestData();
+    this.cinemaAction();
   }
 
 }

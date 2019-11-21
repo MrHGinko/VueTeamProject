@@ -32,11 +32,11 @@ export default {
                     component: () =>
                         import ('../../views/Movie/NowPlaying/detail/cinemas')
                 },
-                // {
-                //     path: 'selectcinema',
-                //     component: () =>
-                //         import ('../../views/Movie/NowPlaying/detail/selectcinema')
-                // }
+                {
+                    path: 'selectcinema',
+                    component: () =>
+                        import ('../../views/Movie/NowPlaying/detail/selectcinema')
+                }
 
             ],
         }

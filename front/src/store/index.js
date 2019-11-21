@@ -8,7 +8,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         username: "?hello",
-        moviedata: "购买"
+        moviedata: "购买",
+        selectSet: '',
+        Result_Z: {}
     },
     mutations: {},
     actions: {},
