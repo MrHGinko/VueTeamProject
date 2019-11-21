@@ -7,14 +7,20 @@ const Order = mongoose.model(
                         type: mongoose.SchemaTypes.ObjectId,
                         ref: "user"
 		},
-		orderID: {
-			type:String,
-			required: true
-			// orderID 为 外卖ID 或 电影ID
-		}, 
-		orderName: {
+		shopName: {
 			type: String,
-			required: true
+		},
+		orderInfo: {
+			type: Array, 
+			// orderID: {
+			// 	type:String,
+			// 	required: true
+			// 	// orderID 为 外卖ID 或 电影ID
+			// }, 
+			// orderName: {
+			// 	type: String,
+			// 	required: true
+			// },
 		},
 		orderType: {
 			type: String,
@@ -41,15 +47,17 @@ const Order = mongoose.model(
 
 module.exports.add = async (
 	user,
-	orderID,
-	orderName,
+	// orderID,
+	// orderName,
+	shopName,
+	orderInfo,
 	orderType,
 	price,
 ) => {
 	let order = new Order({
 		user,
-		orderID,
-		orderName,
+		shopName,
+		orderInfo,
 		orderType,
 		price
 	});

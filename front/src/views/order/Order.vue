@@ -87,9 +87,30 @@ export default {
 			this.status = 'all';
 		},  // test OK
 		async testAdd() {
-			let result = await this.$store.dispatch('order/addOrder', [
-				'F98', 'Loving Vincent', 'film', 30
-			]);
+			let result = await this.$store.dispatch('order/addOrder', 
+				// 'F98', 'Loving Vincent', 'film', 30
+				{
+					shopName: '测试用商店',
+					orderType: 'Food',
+					price: 20,
+					orderInfo: [
+						{
+							orderID: 'test1',
+							orderPicurl: '12213',
+							orderName: 'Loving Vincent',
+							orderCount: 2,
+							price: 10,
+						},
+						{
+							orderID: 'test2',
+							orderPicurl: '12213',
+							orderName: 'the Kitter Runner',
+							orderCount: 2,
+							price: 10
+						},
+					]
+				}
+			);
 			this.refreshData();
 			console.log(result);
 		},  
@@ -98,6 +119,16 @@ export default {
 				// console.log('计算余额');
 				this.buyID = id;
 				this.isShow = true;
+				return ;
+			}
+			else if(status === 3) {
+				this.buyID = id;
+				this.$router.push({
+					name: 'comment',
+					params: {
+						id: this.buyID
+					}
+				});
 				return ;
 			}
 			else{
@@ -118,6 +149,7 @@ export default {
 	async created() {
 		this.refreshData();
 		this.$store.dispatch('mine/refreshData');
+		this.list = this.$store.commit('get');
 	}
 }
 </script>

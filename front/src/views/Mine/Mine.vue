@@ -229,7 +229,7 @@ export default {
 
 .userinfo {
 	height: 80px;
-	background-color: rgb(102, 102, 102);
+	background-color: rgb(255, 156, 42);
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
