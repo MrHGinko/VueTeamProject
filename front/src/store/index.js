@@ -11,11 +11,16 @@ export default new Vuex.Store({
         moviedata: "购买",
         selectSet: '',
         Result_Z: {},
-        cinemaSelect: '123'
+        cinemaSelect: '123',
+        Z_result: []
     },
     mutations: {
         getCinemaSelect(state, value) {
             state.cinemaSelect = value;
+        },
+
+        result(state, value) {
+            state.Z_result = value;
         }
     },
     actions: {},

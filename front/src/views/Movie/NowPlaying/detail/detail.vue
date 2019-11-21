@@ -144,8 +144,7 @@ export default {
       
       if(element.id == this.value){
          this.arr1.push(element)
-      }
-     
+      } 
     }
     },
     created (){

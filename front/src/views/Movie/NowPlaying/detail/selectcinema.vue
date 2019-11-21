@@ -1,10 +1,10 @@
 <template>
  <div class="select">
-      <app-header :hasBack="true" title=""></app-header>
+      <app-header :hasBack="true" :title="arr1[0].nm"></app-header>
       <div class="content">
           <div class="title_cinema">
-              <h1>海上钢琴师</h1>
-              <h2>2019-11-22 10:40 原版2D</h2>
+              <h1 class="title_cinemah1">{{arr2[0].nm}}</h1>
+              <h2 class="title_cinemah2">2019-11-22 10:40 <i>{{arr2[0].ver}}</i></h2>
           </div>
           <h1 class="h111">{{num}}号厅</h1>
           <div class="list_set"> 
@@ -42,20 +42,41 @@ export default {
             cines:[],
             tabIndex:null,
             prititle:'请先选座',
+            cinematitle:'',
             num:null,
-            selectId:null,
-            values:null,
-            value:null
+            selectId:null,//影院ID
+            values:null,//电影ID
+            value:null,
+            arr:[],
+            arr1:[],
+            arr2:[],
+            arr3:[],
+            ObjResult:{},
+            ObjRewultArr:[]
         }
     },
     computed: {
 
     },
     methods: {
+        ObjResultFunction(){
+            ObjResult.movie=this.arr2;
+            ObjResult.cinema = this.arr1;
+            ObjResult.set = this.indexobj;
+            ObjResult.price =  this.indexsarr.length * 35;
+           
+        }
+        ,
         zfAction(){
             if((this.prititle.slice(0,1))*1){
 
                 alert("订单提交成功")
+                this.ObjResult.movie=this.arr2;
+                this.ObjResult.cinema = this.arr1;
+                this.ObjResult.set = this.indexobj;
+                this.ObjResult.price =  this.indexsarr.length * 35;
+                this.ObjRewultArr.push(this.ObjResult);
+                 this.$store.commit('result', this.ObjRewultArr);
             }
         },
         tnum(){
@@ -70,6 +91,7 @@ export default {
         this.value = bss;
         console.log(this.value)
     },
+    /* 获取电影ID */
     getdyid(){
 
         let idss = window.location.href;
@@ -115,6 +137,7 @@ export default {
              
              console.log(this.indexobj)
             //设置cur默认类型为数组，并且初始值为空的数组
+            /* 遍历数组是否有相同值Pass掉 */
               this.indexsarr.push(this.indexobj);
               let obj = {};
                 this.indexsarr = this.indexsarr.reduce((cur,next) => {
@@ -130,8 +153,7 @@ export default {
          
         // console.log(JSON.stringify(this.indexsarr).indexOf(JSON.stringify(this.indexobj)))
         },
-        localset(){
-           
+        localset(){        
                 // this.cines = JSON.parse(localStorage.getItem('cines'));
         },
             /*根据影院ID过滤显示*/
@@ -139,9 +161,8 @@ export default {
 
         axios.get('/static/cinema_data.json', { baseURL: 'http://localhost:8083' })
             .then(response => {
-         console.log(response)
+            // console.log(response)
           let ls = response.data.cinemas;
-            console.log(ls)
           this.arr =  ls.map(element => {
          return {
            id:element.id,
@@ -151,16 +172,65 @@ export default {
            sellPrice:element.sellPrice,
            distance:element.distance,
          }
-  });
-  console.log(this.arr)
+        });
+            // console.log(this.arr)
               this.arr.map(element=>{        
                   this.searcElement(element);     
                     })
-                    this.playerOptions.sources[0].src = this.arr1[0].video;
                     }).catch(error => {
                         window.console.log(error);
                     })
     },
+
+    searcElement(element){
+      
+      if(element.id == this.selectId){
+         this.arr1.push(element)
+      } 
+    },
+
+
+requestDatady(){
+
+        axios.get('/static/movie_list_detail.json', { baseURL: 'http://localhost:8083' })
+            .then(response => {
+          let ls = response.data.detailMovie;
+            console.log(ls)
+   this.arr3 =  ls.map(element => {
+         return {
+           id:element.id,
+           jpgUrl:element.img,
+           nm:element.nm,
+           rt:element.rt,
+           sc:element.sc,
+           showInfo:element.showInfo,
+           star:element.star,
+           wish:element.wish,
+            video:element.vd,
+            ver:element.ver,
+            info:element.dra,
+         }
+  });
+   
+
+    console.log(this.arr2)
+     this.arr3.map(element=>{        
+         this.searcElementdy(element);     
+      })
+    }).catch(error => {
+        window.console.log(error);
+    })
+    },
+   
+   searcElementdy(element){
+      
+      if(element.id == this.values){
+        
+         this.arr2.push(element)
+         console.log(this.arr2)
+      } 
+    }
+    
 
     },
     created () {
@@ -169,6 +239,8 @@ export default {
         this.tnum();
         this.getdyid();
         this.selectId = this.$store.state.cinemaSelect;
+        this.requestData();
+        this.requestDatady();
     }
 
 }
@@ -248,6 +320,14 @@ export default {
             font-size: 26px;
             border-radius: 10px;
         }
+        }
+        .title_cinemah2 i{
+            color: goldenrod;
+        }
+        .title_cinemah1{
+            color: red;
+            font-weight: 900;
+            padding: 3px;
         }
       
 }

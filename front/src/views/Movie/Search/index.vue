@@ -46,7 +46,8 @@ export default {
   ticket:'',
   ac:false,
   value:'',
-  ls:''
+  ls:'',
+  valuess:[]
     }
   },
 methods: {
@@ -114,7 +115,8 @@ methods: {
 
 },
 created  () {
-  
+  this.valuess = this.$store.state.Z_result;
+  console.log(this.valuess)
 }
 }
 </script>

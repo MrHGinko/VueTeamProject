@@ -70,7 +70,7 @@ export default {
            distance:element.distance,
          }
   });
-  console.log(this.arr)
+  // console.log(this.arr)
               this.arr.map(element=>{        
                   this.searcElement(element);     
                     })
