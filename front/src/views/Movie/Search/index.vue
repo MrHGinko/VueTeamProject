@@ -63,7 +63,7 @@ methods: {
     //  this.searchMethod();
   },
    requestData(){
- axios.get('/static/movie_list.json', { baseURL: 'http://localhost:8081' })
+ axios.get('/static/movie_list.json', { baseURL: 'http://localhost:8083' })
     .then(response => {
       // console.log(response.data.movieList)
         let ls = response.data.movieList;

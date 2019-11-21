@@ -16,14 +16,14 @@ const routes = [
     //                 import ( /* webpackChunkName: "about" */ "../views/Movie")
     //         }
     //     },
-    {
-        path: '/movie',
-        redirect: '/movie/nowplaying'
-    },
-    {
-        path: '/',
-        redirect: '/movie'
-    },
+    // {
+    //     path: '/movie',
+    //     redirect: '/movie/nowplaying'
+    // },
+    // {
+    //     path: '/',
+    //     redirect: '/movie'
+    // },
     Movie,
     Mine,
     Cinema,

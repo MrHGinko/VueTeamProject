@@ -28,10 +28,17 @@ export default {
             component: () =>
                 import ('../../views/Movie/NowPlaying/detail/detail'),
             children: [{
-                path: 'cinema',
-                component: () =>
-                    import ('../../views/Movie/NowPlaying/detail/cinema')
-            }],
+                    path: 'cinemas',
+                    component: () =>
+                        import ('../../views/Movie/NowPlaying/detail/cinemas')
+                },
+                // {
+                //     path: 'selectcinema',
+                //     component: () =>
+                //         import ('../../views/Movie/NowPlaying/detail/selectcinema')
+                // }
+
+            ],
         }
     ]
 }

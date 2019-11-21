@@ -130,9 +130,6 @@ opacity:1;
 opacity:0;
 -webkit-transform:translate(0, -7px) rotate(45deg)
 }}
-
-
-
      }
   }
 }

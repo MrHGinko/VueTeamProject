@@ -1,6 +1,8 @@
 <template>
   <div class="detail">
-     
+      <h1>111</h1>
+     <router-view></router-view> 
+
        <app-header :hasBack="true" :title="arr1[0].nm " class="app_de"></app-header>
        <div class="detail_content">
             <app-scroll class="content" >
@@ -11,8 +13,7 @@
            <video-player  class="video-player vjs-custom-skin vjs-big-play-button posi"
             ref="videoPlayer"
             :playsinline="false"
-            :options="playerOptions"
-></video-player>
+            :options="playerOptions"></video-player>
  <img :src="item.jpgUrl" alt="">
             <div class="licenter">
             <h1>影片名：{{item.nm}}</h1>
@@ -24,12 +25,12 @@
           </ul>
         </app-scroll>
         <div class="goumai">
-           <router-link to="/movie/detail/cinema"><h2>我想购票</h2></router-link>
+           <router-link :to="ids"><h2>我想购票</h2></router-link>
            
        </div>
     <p @click="zkAction">{{iszk}}</p>
        </div>
-          <router-view></router-view> 
+          
   </div>
 </template>
 
@@ -50,6 +51,7 @@ export default {
     },
     data () {
         return {
+
             classVal:'h3css',
             value:'',
             iszk:'展开',
@@ -84,6 +86,9 @@ export default {
         }
     },
     computed: {
+        ids() {
+            return `/movie/detail/${this.value}/cinemas`;
+        },
     },
     methods: {
 
@@ -103,7 +108,7 @@ export default {
     
           requestData(){
 
-        axios.get('/static/movie_list_detail.json', { baseURL: 'http://localhost:8081' })
+        axios.get('/static/movie_list_detail.json', { baseURL: 'http://localhost:8083' })
             .then(response => {
          console.log(response.data.detailMovie[0].vd)
           let ls = response.data.detailMovie;
@@ -147,6 +152,8 @@ export default {
     created (){
         this.value = this.$route.params.id;
         this.requestData();
+        this.ids = `/movie/detail/${this.value}/cinemas`;
+        
     }
 }
 </script>
@@ -156,10 +163,10 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgb(102, 92, 41);
-     position: absolute;
+    position: absolute;
     top: 0px;
     bottom: 49px;
-     z-index: 101;
+    z-index: 101;
  
 }
 .detail_content{
@@ -195,7 +202,7 @@ export default {
     line-height: 27px;
       }
       .h3css2{
-           display: -webkit-box;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
    
     text-overflow: ellipsis;
@@ -213,7 +220,6 @@ export default {
       position: absolute;
       bottom: 0;
       width: 100%;
-     
       background: red;
       font-weight: 900;
       color: yellow;

@@ -8,6 +8,8 @@ import VueAxios from 'vue-axios'
 import './style/common.scss'
 import VueAMap from 'vue-amap'
 import VueScroller from 'vue-scroller'
+import vRegion from 'v-region';
+// import '../public/css/abc.css'
 
 VueAMap.initAMapApiLoader({
     key: '你的key值',
@@ -15,7 +17,12 @@ VueAMap.initAMapApiLoader({
     uiVersion: '1.0.11' // 版本号
 })
 
-Vue.use(VueScroller, VueAMap)
+Vue.use(VueScroller);
+
+Vue.use(VueAMap);
+
+Vue.use(vRegion);
+
 
 Vue.prototype.$http = axios;
 
