@@ -8,23 +8,11 @@
 				}
 			"
 		></header-bar>
-		<textarea
-			class="com-con"
-			placeholder="赶紧来输入评论吧!"
-			re
-		></textarea>
+		<textarea class="com-con" placeholder="赶紧来输入评论吧!" re></textarea>
 		<div class="ratebox">
-			<div
-				class="rate"
-				v-for="(item, index) in rateList"
-				:key="index"
-			>
+			<div class="rate" v-for="(item, index) in rateList" :key="index">
 				<p class="r-title">{{ item.title }}</p>
-				<van-rate
-					v-model="item.value"
-					:size="32"
-					color="rgb(255, 149, 50)"
-				/>
+				<van-rate v-model="item.value" :size="32" color="rgb(255, 149, 50)" />
 			</div>
 		</div>
 		<button class="btn" @click="toComment()">评价</button>
@@ -32,7 +20,7 @@
 </template>
 
 <script>
-	import { Rate } from 'vant';
+	import {Rate} from 'vant';
 	export default {
 		components: {
 			[Rate.name]: Rate,
@@ -43,9 +31,9 @@
 		data() {
 			return {
 				rateList: [
-					{ title: '菜肴美味', value: 0 },
-					{ title: '派送服务', value: 0 },
-					{ title: '店铺评价', value: 0 },
+					{title: '服务评价', value: 0},
+					{title: '店铺 | 影院评价', value: 0},
+					{title: '满意程度', value: 0},
 				],
 				orderID: null,
 			};
@@ -58,16 +46,15 @@
 					change: 3,
 				};
 				let result = await this.$store.dispatch('order/changeStatus', order);
-				if(result.data.code === 0) {
-					this.$Toast("评价成功");
+				if (result.data.code === 0) {
+					this.$Toast('评价成功');
 					this.$router.replace('/order');
 				}
-			}
+			},
 		},
 		created() {
 			this.orderID = this.$route.params.id;
-
-		}
+		},
 	};
 </script>
 

@@ -1,13 +1,13 @@
 // food页面的json渲染数据
-const HOST = 'DNAIO:7889'
+const HOST = 'DNAIO:7889';
 
-const FOOD_API = '/api/food/food_index';
+const FAST_MOVIE_API = '/api/movie/fast_movie';
 
-const FOOD_FIND_LIST_API = '/api/food/find_list';
+const LOCAL_FILE_API = '/api/movie/local_file';
 
-const FOOD_RESTAUTANT_API = '/api/food/restautant_list';
+const MOVIE_LIST_API = '/api/movie/movie_list';
 
-const FOOD_SELLER_API = '/api/food/seller';
+const MOVIE_LIST_NAV_API = '/api/movie/movie_list_nav';
 // -------------------------------
 
 // user api
@@ -20,14 +20,13 @@ const USER_LOGIN_API = '/api/user/login';
 //  params: {username:String, password:String}
 const USER_REGIESTER_API = '/api/user/regiester';
 
-// 检查登录 
+// 检查登录
 // 无
 const USER_CHECK_API = '/api/user/check_login';
 
-// 登出 
+// 登出
 // 无
 const USER_LOGOUT_API = '/api/user/logout';
-
 
 // 获取用户其他数据
 // 无
@@ -48,14 +47,11 @@ const ORDER_LIST_API = '/api/order/orderlist';
 const ORDER_ADD_API = '/api/order/newOrder';
 
 // 修改订单状态 methods: post
-// 
+//
 const ORDER_CHANGE_API = '/api/order/change_status';
 
 export default {
-	FOOD_API,
-	FOOD_FIND_LIST_API,
-	FOOD_RESTAUTANT_API,
-	FOOD_SELLER_API,
+
 	USER_LOGIN_API,
 	USER_REGIESTER_API,
 	USER_CHECK_API,
@@ -64,5 +60,9 @@ export default {
 	USER_CHANGEINFO_API,
 	ORDER_LIST_API,
 	ORDER_ADD_API,
-	ORDER_CHANGE_API
-}
+	ORDER_CHANGE_API,
+	FAST_MOVIE_API,
+	LOCAL_FILE_API,
+	MOVIE_LIST_API,
+	MOVIE_LIST_NAV_API,
+};

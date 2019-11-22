@@ -177,7 +177,6 @@ export default {
 	},
 	beforeRouteUpdate(to, from ,next) {
 		console.log(to.path.slice(6));
-		if(to.path.slice(6) === '') {console.log(to); next()}; //匹配到 /mine/
 
 		if(to.path.slice(6) === 'pointMark') {
 			if(this.$store.state.isLogin) {
@@ -186,7 +185,8 @@ export default {
 				this.toLogin();
 			}
 		}
-
+		
+		if(to.path.slice(6) != '') {console.log(to); next()}; //匹配到 /mine/
 	}
 }
 </script>

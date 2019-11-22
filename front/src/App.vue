@@ -2,7 +2,7 @@
 	<div id="app">
 
 		<router-view/>
-		
+		<tab-bar class="tab_bar"></tab-bar>
 		<FootNav />
 
 		<transition :enter-active-class="hasAnimate?'slideInDown':''" leave-active-class="slideOutDown">
@@ -11,7 +11,6 @@
 	
 	</div>
 </template>
-
 <script>
 import Login from './views/Mine/Login'
 import Regiester from './views/Mine/Regiester'
@@ -63,8 +62,9 @@ export default {
 	
 }
 </script>
-
+  
 <style>
+<<<<<<< HEAD
 html,
 body,
 #app {
@@ -77,3 +77,10 @@ body,
 	top: 48px;
 	width: 100%;
 }
+=======
+  .tab_bar{
+    position: fixed;
+    bottom: 0;
+  }
+</style>
+>>>>>>> b4f30ca16dd6cadf0ffa130dca4df3ec612032e4

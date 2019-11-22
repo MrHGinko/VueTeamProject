@@ -59,12 +59,27 @@ export default {
     goDetail(item){
         this.$store.commit('shoppingCart/sendShopInfo',item);
         this.$router.push(`detail/${item.mtWmPoiId}`);
-    }
+    },
+    listener(data){
+            // window.console.log(Math.abs(data));
+            if(Math.abs(data) > 1800 && Math.abs(data) < 1900){
+                this.requestData();
+            }
+        },
   },
   created(){
     this.requestData();
-    // window.console.log(this.shopsData);
-  }
+        // window.console.log(this.shopsData);
+    this.$center.$on('scrollTop', this.listener);
+     
+  },
+  beforeUpdate() {
+        // window.console.log(this.shopsData);
+        // window.console.log(this);
+  },
+  beforeDestroy(){
+		this.$center.$off('scrollTop', this.listener);
+    }
 }
 </script>
 <style lang="scss" scoped>

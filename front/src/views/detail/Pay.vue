@@ -171,8 +171,11 @@
 			top: 50px;
 			bottom: 50px;
 			box-sizing: border-box;
-			padding: 0 15px;
 			z-index: 666;
+			.content {
+				box-sizing: border-box;
+				padding: 0 16px;
+			}
 			.shopName {
 				width: 100%;
 				height: 50px;

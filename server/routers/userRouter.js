@@ -45,32 +45,32 @@ router.post("/login", (req, res) => {
                 })
                 .catch(error => {
                         res.json({ code: -2, message: error.message });
-                });
-});
+                })
+            });
 
 
 // 检查登录是否过期
 router.get("/check_login", (req, res) => {
-        if (req.session.userInfo && req.session.userInfo.tel) {
-                res.json({
-                        code: 0,
-                        message: "ok"
-                });
-        } else {
-                res.json({
-                        code: -1,
-                        message: "请重新登录"
-                });
-        }
+    if (req.session.userInfo && req.session.userInfo.tel) {
+        res.json({
+            code: 0,
+            message: "ok"
+        });
+    } else {
+        res.json({
+            code: -1,
+            message: "请重新登录"
+        });
+    }
 });
 
 //退出登录
 router.get("/logout", (req, res) => {
-        delete req.session.userInfo;
-        res.json({
-                code: 0,
-                message: "ok"
-        });
+    delete req.session.userInfo;
+    res.json({
+        code: 0,
+        message: "ok"
+    });
 });
 
 module.exports = router;

@@ -1,27 +1,30 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 // 引入路由模块
-import mineRouter from './mine-router'
-import orderRouter from './order-router'
+import mineRouter from './mine-router';
+import orderRouter from './order-router';
+import Movie from './movie';
+import Mine from './mine';
+import Cinema from './cinema';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
 	{
 		path: '/home',
 		name: 'home',
-		component: () => import('../views/home/Home.vue')
+		component: () => import('../views/home/Home.vue'),
 	},
 	{
 		path: '/detail/:id',
 		name: 'detail',
-		props:true,
-		component: () => import('../views/detail/Detail.vue')
+		props: true,
+		component: () => import('../views/detail/Detail.vue'),
 	},
 	{
 		path: '/pay',
 		name: 'pay',
-		component: () => import('../views/detail/Pay.vue')
+		component: () => import('../views/detail/Pay.vue'),
 	},
 	// {
 	// 	path: "/",
@@ -32,12 +35,15 @@ const routes = [
 	// },
 	// 添加路由模块
 	mineRouter,
-	orderRouter
+	orderRouter,
+	Movie,
+	Mine,
+	Cinema,
 ];
 
 const router = new VueRouter({
 	mode: 'history',
-	routes
-})
+	routes,
+});
 
-export default router
+export default router;

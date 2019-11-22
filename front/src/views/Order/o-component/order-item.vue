@@ -1,14 +1,11 @@
 <template>
 	<div id="order-item">
-		<span class="pic"> <img :src="order.orderInfo[0].orderPicurl"> </span>
+		<span class="pic"> <img :src="order.orderInfo[0].orderPicurl" /> </span>
 		<div class="info">
 			<p class="i-title">
 				<!-- {{ order.orderName }} -->
-				<span
-					v-for="(item, index) in order.orderInfo"
-					:key="index"
-				>
-					{{ item.orderName }}  <span v-if="index < order.orderInfo.length-1"> || </span>
+				<span v-for="(item, index) in order.orderInfo" :key="index">
+					{{ item.orderName }} <span v-if="index < order.orderInfo.length - 1"> || </span>
 				</span>
 			</p>
 			<p class="i-date">{{ getDate(order.orderDate) }}</p>
@@ -16,16 +13,7 @@
 			<p>店名：{{ order.shopName }}</p>
 			<p>
 				总价：{{ order.price }}
-				<button
-					class="act"
-					:class="statusClass"
-					@click="
-						change(
-							order._id,
-							order.status + 1,
-						)
-					"
-				>
+				<button class="act" :class="statusClass" @click="change(order._id, order.status + 1)">
 					{{ btnTxt[order.status] }}
 				</button>
 			</p>
@@ -46,12 +34,7 @@
 		},
 		data() {
 			return {
-				btnTxt: [
-					'去付款',
-					'现在使用',
-					'去评价',
-					'售后申请',
-				],
+				btnTxt: ['去付款', '待定', '去评价', '售后申请'],
 			};
 		},
 		computed: {
@@ -84,9 +67,7 @@
 				}
 			},
 		},
-		created() {
-			
-		},
+		created() {},
 	};
 </script>
 
@@ -106,7 +87,7 @@
 				height: 60px;
 				vertical-align: middle;
 				transform: translateY(50%);
-				margin-top : -50%;
+				margin-top: -50%;
 			}
 		}
 		.info {

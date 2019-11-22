@@ -28,7 +28,7 @@
             <RightInfoBox class="right_info" ref="rightInfo" :style="{height:infoHeight}">
                 <div class="kind" v-for="(item,index) in shopData" :key="index">
                     <h3>{{item.categoryName}}</h3>
-                    <div class="commodity" v-for="(commodity,index) in item.spuList" :key="index">
+                    <div class="commodity" v-for="(commodity,index) in item.spuList" :key="index" @click="showShopInfo(commodity)">
                         <img :src="`${commodity.bigImageUrl}`" alt="">
                         <div class="commodityDetail">
                             <h2>{{commodity.spuName}}</h2>
@@ -99,7 +99,7 @@
     <div class="shopping" ref="shopping" v-show="this.active == 0 ? true : false">
         <div class="shoppingCart" @click="showPopup">
             <i class="iconfont icongouwuchekong"></i>
-            <span class="num" v-show="commodities.length==0?false:true">{{commodities.length}}</span>
+            <span class="num" v-show="commodities.length==0?false:true">{{sum}}</span>
         </div>
         <div class="totalPrices">
             <div class="addDispatchPrice iconfont" v-html="this.ShopInfo.shippingFeeTip" v-if="commodities.length == 0 ? true : false"></div>
@@ -180,6 +180,13 @@ export default {
                count += (item.originPrice * item.saleVolume * 10);
            })
            return count = count / 10;
+       },
+       sum(){
+           let sum = 0;
+           this.commodities.forEach((item,index)=>{
+               sum += item.saleVolume;
+           })
+            return sum;
        }
    },
     methods:{
@@ -210,7 +217,6 @@ export default {
                     // window.console.log(rollY);
                 }
             }
-            this.$center.$emit('send', rollY);
             let leftInfoList = this.$refs.leftInfo.$el.children[0].children;
             for(var j = 0; j < leftInfoList.length; j++){
                 if(j == index){
@@ -219,9 +225,26 @@ export default {
                     leftInfoList[j].style.background = '';
                 }
             }
+            this.$center.$emit('send', rollY);
         },
         listener(data){
             // window.console.log(data);
+            let arr = [0];
+            this.$refs.rightInfo.$el.children[0].childNodes.forEach(item=>{
+                arr.push(item.clientHeight);
+            })
+            // window.console.log(arr);
+            let leftInfoList = this.$refs.leftInfo.$el.children[0].children;
+            let sum = arr.reduce(function(prev, cur, index, arr) {
+                    // console.log(prev, cur, index);
+                    // console.log(prev,(prev + cur),index);
+                if(Math.abs(data) >= prev && Math.abs(data) < (prev + cur)){
+                    leftInfoList[index-1].style.background = '#fff';
+                }else{
+                    leftInfoList[index-1].style.background = '';
+                }
+                return prev + cur;
+            })
         },
         getHeight(){
             return (window.innerHeight - (this.$refs.header.clientHeight + this.$refs.notice.clientHeight*1.25 + this.$refs.menus.$refs.wrap.clientHeight + this.$refs.shopping.clientHeight) + 'px');
@@ -296,6 +319,9 @@ export default {
         toPay(){
             this.$store.commit('shoppingCart/setCartInfo',this.commodities);
             // window.console.log(this.$store);
+        },
+        showShopInfo(commodity){
+            // window.console.log('点击了',commodity);
         }
     },
     created(){  
@@ -305,9 +331,9 @@ export default {
 
         this.ShopInfo = this.$store.getters['shoppingCart/getShopInfo'];
         this.requestData();
-        // this.$center.$on('onScroll', this.listener);
+        this.$center.$on('onScroll', this.listener);
         // window.console.log(this.ShopInfo);
-        // window.console.log(this.ShopInfo.discounts2);
+        // window.console.log(this.commodities);
         // window.console.log(this.ShopInfo.minPriceTip.substring(4))
     },
     mounted(){
@@ -315,7 +341,7 @@ export default {
         this.contentHeight = this.getContentHeight();
     },
     beforeDestroy(){
-        // this.$center.$off('onScroll', this.listener);
+        this.$center.$off('onScroll', this.listener);
 	}
 }
 </script>
