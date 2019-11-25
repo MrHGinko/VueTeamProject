@@ -86,6 +86,12 @@
 				history.back();
 			},
 			async submitOrder() {
+				if(!this.$store.state.isLogin) {
+					console.log(this.$store.state.isLogin);
+					this.$center.$emit('toggleLogin', true);
+					this.$Toast('请先登录');
+					return ;
+				}
 				let allInfo = [];
 				this.commodities.forEach((item, index) => {
 					allInfo[index] = {
@@ -138,7 +144,7 @@
 		width: 100%;
 		height: 100%;
 		position: relative;
-		z-index: 9999;
+		z-index: 1000;
 		background: #fff;
 		.header {
 			width: 100%;

@@ -377,7 +377,6 @@ h1,h2,h3,h4,h5,h6{
         width: 100%;
         height: 80px;
         padding: 5px 0 0 10px;
-        margin-bottom: 20px;
         background: #2E2F3B;
         display: flex;
         .ShopInfo_picUrl{

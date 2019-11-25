@@ -2,7 +2,7 @@
   <div class="header">
     <div class="location">
       <i class="iconfont iconlocation"></i>
-      <span class="site">深圳西部硅谷</span>
+      <span class="site" @click='goMovie()'>前往猫眼电影</span>
       <i class="iconfont iconarrow-left"></i>
     </div>
     <label class="search">
@@ -14,7 +14,11 @@
 
 <script>
 export default {
-
+	methods: {
+		goMovie() {
+			this.$router.push('/movie');
+		}
+	}
 }
 </script>
 <style lang="scss" scoped>

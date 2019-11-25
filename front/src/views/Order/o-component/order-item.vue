@@ -83,6 +83,7 @@
 			display: flex;
 			color: white;
 			align-items: center;
+			min-width: 60px;
 			img {
 				height: 60px;
 				vertical-align: middle;

@@ -66,7 +66,7 @@ export default {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		z-index: 10;
+		z-index: 1000;
 		.b-exit {
 			position: absolute;
 			right: 16px;

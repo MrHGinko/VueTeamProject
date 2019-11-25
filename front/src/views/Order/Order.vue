@@ -81,10 +81,6 @@
 			allOrder() {
 				this.status = 'all';
 			}, // test OK
-			async testAdd() {
-				let result = await this.$store.dispatch('order/addOrder', {});
-				console.log(result);
-			},
 			async HandleChange(id, status) {
 				if (status === 1) {
 					// console.log('计算余额');

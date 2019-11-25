@@ -20,8 +20,12 @@ export default new Vuex.Store({
 		Result_Z: {},
 		cinemaSelect: '123',
 		Z_result: [],
+		selAds: {},
 	},
 	mutations: {
+		setAds(state, value) {
+			state.selAds = value;
+		},
 		setLogin(state, flag) {
 			state.isLogin = flag;
 			localStorage.setItem('isLogin', flag);

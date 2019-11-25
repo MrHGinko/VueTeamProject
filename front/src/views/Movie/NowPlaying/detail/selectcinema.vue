@@ -68,6 +68,12 @@ export default {
         }
         ,
        async zfAction(){
+	if(!this.$store.state.isLogin) {
+		this.$Toast('请先登录');
+		this.$center.$emit('toggleLogin', true);
+
+		return ;
+	}
             if((this.prititle.slice(0,1))*1){
                 this.ObjResult.movie=this.arr2;
                 this.ObjResult.cinema = this.arr1;

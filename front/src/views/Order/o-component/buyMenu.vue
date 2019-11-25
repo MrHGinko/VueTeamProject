@@ -16,8 +16,7 @@
 				<span v-if="order.orderType == 'Food'">店铺名称</span>
 				<span v-else-if="order.orderType == 'Film'">电影院名称</span><br />
 				{{ order.shopName }}
-				<br />
-				<br />
+				<br /><br />
 				订单编号 <br />
 				{{ order._id }}
 				<br /><br />
@@ -25,9 +24,12 @@
 				{{ getDate(order.orderDate) }}
 			</p>
 			<p>
-				<button class="btn" @click="p = topay(order._id, order.status + 1)">
+				<button class="btn" @click="topay(order._id, order.status + 1)">
 					付款
 				</button>
+				<span v-if="order.orderType == 'Food'" class="s-address" @click="toAddress"> 
+					<p class="i-ads" v-html="selAds"></p>
+				 </span>
 			</p>
 
 			<p class="i-pay border-bottom">
@@ -77,6 +79,13 @@
 			},
 		},
 		computed: {
+			selAds() {
+				if(this.$store.state.selAds.tel) {
+					console.log(this.$store.state.selAds);
+					return `收货人电话: ${this.$store.state.selAds.tel} 收货地址: ${this.$store.state.selAds.ads}`;
+				}
+				else return '选择收货地址';
+			},
 			isLoading() {
 				return this.$store.state.isLoading;
 			},
@@ -91,6 +100,9 @@
 			},
 		},
 		methods: {
+			toAddress() {
+				this.$center.$emit('toggleAds', true);	
+			},
 			getDate(orderDate) {
 				let date = new Date(orderDate);
 				let time =
@@ -218,6 +230,18 @@
 					margin-top: 8px;
 					border-radius: 8px;
 					color: rgb(255, 255, 255);
+				}
+				.s-address {
+					display: inline-block;
+					margin-top: 16px;
+					font-size: 14px;
+					padding: 8px;
+					border-radius: 8px;
+					background: rgb(236, 236, 236);
+					.i-ads {
+						line-height: 24px;
+						margin-bottom: 0;
+					}
 				}
 			}
 		}

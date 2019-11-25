@@ -5,7 +5,7 @@
 		<tab-bar class="tab_bar"></tab-bar>
 		<FootNav />
 
-		<transition :enter-active-class="hasAnimate?'slideInDown':''" leave-active-class="slideOutDown">
+		<transition :enter-active-class="hasAnimate?'slideInRight':''" leave-active-class="slideOutRight">
 			<component v-if="showCom" :is="comName" />
 		</transition>
 	
@@ -14,6 +14,7 @@
 <script>
 import Login from './views/Mine/Login'
 import Regiester from './views/Mine/Regiester'
+import sAddress from './views/Order/o-component/Address'
 import FootNav from './views/lib/FootNav'
 // import Content from './views/lib/Content'
 import './views/font/iconfont.css'
@@ -21,7 +22,8 @@ export default {
 	components: {
 		Login,
 		Regiester,
-		FootNav
+		FootNav,
+		sAddress,
 	},
 	data() {
 		return {
@@ -33,23 +35,32 @@ export default {
 	async created() {
 
 		// 监听展示登录组件
-		this.$center.$on('toggleLogin', (value) => {
-			if (this.showCom && value) {
+		this.$center.$on('toggleLogin', (flag) => {
+			if (this.showCom && flag) {
 				this.hasAnimate = false;
 			} else {
 				this.hasAnimate = true;
 			}
-			this.showCom = value;
+			this.showCom = flag;
 			this.comName = 'Login';
 		})
-		// 监听展示注册组件
-		this.$center.$on('toggleReg', (value) => {
-			if (this.showCom && value) {
+		this.$center.$on('toggleAds', (flag) => {
+			if (this.showCom && flag) {
 				this.hasAnimate = false;
 			} else {
 				this.hasAnimate = true;
 			}
-			this.showCom = value;
+			this.showCom = flag;
+			this.comName = 'sAddress';
+		})
+		// 监听展示注册组件
+		this.$center.$on('toggleReg', (flag) => {
+			if (this.showCom && flag) {
+				this.hasAnimate = false;
+			} else {
+				this.hasAnimate = true;
+			}
+			this.showCom = flag;
 			this.comName = 'Regiester';
 		})
 
@@ -64,7 +75,6 @@ export default {
 </script>
   
 <style>
-<<<<<<< HEAD
 html,
 body,
 #app {
@@ -77,10 +87,3 @@ body,
 	top: 48px;
 	width: 100%;
 }
-=======
-  .tab_bar{
-    position: fixed;
-    bottom: 0;
-  }
-</style>
->>>>>>> b4f30ca16dd6cadf0ffa130dca4df3ec612032e4

@@ -17,6 +17,9 @@ const UserInfo = mongoose.model(
 			type: Number,
 			default: 0
 		},
+		address : {
+			type: Array,
+		}
 		// 评价 评论等
 	})
 );
@@ -31,12 +34,12 @@ module.exports.find = async tel => {
 }
 
 module.exports.change = async (tel, options) => {
-	
 	Object.entries(options).forEach(async ([key, value]) => {
 		switch(key) {
 			case 'nickName': await UserInfo.findOneAndUpdate({tel}, {nickName: value}); break;
 			case 'balance': await UserInfo.findOneAndUpdate({tel}, {balance: value}); break;
 			case 'point': await UserInfo.findOneAndUpdate({tel}, {point: value}); break;
+			case 'address': await UserInfo.findOneAndUpdate({tel}, {address: value}); break;
 			default: break;
 		}
 	})
