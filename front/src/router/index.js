@@ -12,7 +12,7 @@ Vue.use(VueRouter);
 const routes = [
 	{
 		path: '/',
-		redirect: '/home'
+		redirect: '/home',
 	},
 	{
 		path: '/home',
@@ -30,6 +30,12 @@ const routes = [
 		name: 'pay',
 		component: () => import('../views/detail/Pay.vue'),
 	},
+	{
+		path: '/classify',
+		name: 'classify',
+		component: () => import('../views/home/ClassifyShop.vue'),
+	},
+
 	// {
 	// 	path: "/",
 	// 	name: "home",

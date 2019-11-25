@@ -21,7 +21,13 @@
 				{{ order._id }}
 				<br /><br />
 				创建时间 <br />
-				{{ getDate(order.orderDate) }}
+				{{ getDate(order.orderDate) }}<br/><br/>
+				<span v-if="order.orderType == 'Film'">座位列表: <br/>
+					<span v-for="item in order.orderInfo[0].orderSet">
+						{{item[0]}}, {{item[1]}} |
+					</span>
+				</span><br/>
+				
 			</p>
 			<p>
 				<button class="btn" @click="topay(order._id, order.status + 1)">

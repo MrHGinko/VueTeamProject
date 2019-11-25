@@ -8,9 +8,8 @@
           </div>
           <h1 class="h111">{{num}}号厅</h1>
           <div class="list_set"> 
-              <div v-for="(item,index) in forList" :key="index" class="forlist" @click="setAction(index);tabNameClick(index)"  :class="{selected:index == tabIndex}">
-                    <div class="tab1 " ref="tab1"  :class="tab2" >{{parseInt((index + 8)/8)}}</div>
-                    <div class="tab1">{{parseInt((index + 8)%8) + 1}}</div>
+              <div v-for="(item,index) in forList" :key="index" class="forlist" @click="setAction(index);tabNameClick(index);rowClick1($event)"    :class="{selected:index == tabIndex}">
+                   
               </div>
           </div>
           <div class="szlblist">
@@ -59,6 +58,22 @@ export default {
 
     },
     methods: {
+	    rowClick1(e){
+        console.log(e.target); 
+             
+        if(e.target.localName === 'div'){
+
+            
+            if(e.target.style.backgroundImage == 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAMAAABG8BK2AAAAnFBMVEUAAABboQBboQBboQBboQBboQBboQBboQBboQBboQBboQBboQBboQBrvQBboQD///9tvgRwwAlgqQD7/ffu+OFouQCHyi95xBhirQCOzj2AxiN0wQ/8/vr3/PH1+u3i8s3O6avC5JSv3Hap2WmU0EdksQDy+ejn9NTZ7r7T7LTL6KS03n6b01To9djd8MTW7bjF5Zq64Iih1V2CuTlErcb+AAAADXRSTlMA8cGnkYQ9+ftbUykeGy6yuwAAAYxJREFUWMPt11dvwjAUhmEHKPs7GUDCHmHv9f//W0ntkOJcYDtqVal5ryzr6JHlu8Pyfq1GqUqaVUsNWWmSUU2J+aC7A82cO31IjEUutHPJkhgiGESUM/+WqRcsIkPmkVWoR0qJ4ryODtHxKK7EWI2oC96SVJywPdoNHgotwesS1ViBK9zx3isz+9EO8LjCnQKrEJLoHeJc7Kjx6yhVGOkwzs7+ai0xpMU4U64MF1kYd8uV1gIZGPecKOaMu+HKqAcFxgk30x7SDU5PRYWZRV94SCsTrox9KDEtO+omKYFQVj7UmBGfn78q66eiyOzttBMc+V27D1UGV+GEiOu3n4oyk7xnLynHADoMQuFcX5R1AD0Gc+HMAPgrfp4E0GQS5wJ/LJQB9BnchLMVymkAEwaHof2tjQsDRnbOLkwZLFqxsnVhzqAnnKkDU0Y4QsnGwG/brZkDM0YuZ/4g0yXluinGrJzJmeyMRZ2sSocsViQvK+NRkZXJwJF3h3K0gWeNb+PlYiWLYRXLLO/n+wSLcdhUYBPkAwAAAABJRU5ErkJggg==")'){
+             e.target.style.backgroundImage = "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABICAMAAABWSoJpAAAAWlBMVEUAAADKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNPKzNP////KzNP8/P3p6u3Y2d7z8/XLzdT4+PnS1NrP0dfw8PLQ0dhOVyJQAAAAEnRSTlMA8r5NhGoRCOLVs3njyiAcsnjlsKc3AAABFElEQVRYw+3Yy3KDMAyFYewA4ZJLqyPbAdL3f80mbWY8LaYTZDad6N/zDdZOKn5VV12DZzNtV9XFX+17g5WZfr/snVrAu4GebnAeaE9L3vmAMdDKwojDeeG9R3im1bHHMf3qd4xMgnhEn/Jqg0CiAkydACt4EuZRJcA3OCno0CXABoMUHNAkQIDEAf8L3FmDW1ngV8bu7l4JIB98VN7+DxfHdE8Ixk/ZXbArLBxRPvidgy0MeDuQYQqAtgMJUFBBBRVUUEEFFVRQQQUVfCVwClIvTEnwOkHYx3UGZhdBA97OY5i4L2+Rg40bfV5xo483By+nPB6VP64iLB9dvIrELFzO6GbFYcpGl6iEuHKuxWGuKDW6T1dge519C3laAAAAAElFTkSuQmCC')";
+             
+           }else{
+             e.target.style.backgroundImage = "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAMAAABG8BK2AAAAnFBMVEUAAABboQBboQBboQBboQBboQBboQBboQBboQBboQBboQBboQBboQBrvQBboQD///9tvgRwwAlgqQD7/ffu+OFouQCHyi95xBhirQCOzj2AxiN0wQ/8/vr3/PH1+u3i8s3O6avC5JSv3Hap2WmU0EdksQDy+ejn9NTZ7r7T7LTL6KS03n6b01To9djd8MTW7bjF5Zq64Iih1V2CuTlErcb+AAAADXRSTlMA8cGnkYQ9+ftbUykeGy6yuwAAAYxJREFUWMPt11dvwjAUhmEHKPs7GUDCHmHv9f//W0ntkOJcYDtqVal5ryzr6JHlu8Pyfq1GqUqaVUsNWWmSUU2J+aC7A82cO31IjEUutHPJkhgiGESUM/+WqRcsIkPmkVWoR0qJ4ryODtHxKK7EWI2oC96SVJywPdoNHgotwesS1ViBK9zx3isz+9EO8LjCnQKrEJLoHeJc7Kjx6yhVGOkwzs7+ai0xpMU4U64MF1kYd8uV1gIZGPecKOaMu+HKqAcFxgk30x7SDU5PRYWZRV94SCsTrox9KDEtO+omKYFQVj7UmBGfn78q66eiyOzttBMc+V27D1UGV+GEiOu3n4oyk7xnLynHADoMQuFcX5R1AD0Gc+HMAPgrfp4E0GQS5wJ/LJQB9BnchLMVymkAEwaHof2tjQsDRnbOLkwZLFqxsnVhzqAnnKkDU0Y4QsnGwG/brZkDM0YuZ/4g0yXluinGrJzJmeyMRZ2sSocsViQvK+NRkZXJwJF3h3K0gWeNb+PlYiWLYRXLLO/n+wSLcdhUYBPkAwAAAABJRU5ErkJggg==')";
+           }  
+        }
+        
+        },
+
         ObjResultFunction(){
             ObjResult.movie=this.arr2;
             ObjResult.cinema = this.arr1;

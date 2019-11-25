@@ -1,13 +1,13 @@
 <template>
   <div class="headerNav">
     <nav class="nav">
-      <li v-for="(item,index) in headerNavData1" :key="index">
+      <li v-for="(item,index) in headerNavData1" :key="index" @click="goClassify">
         <img :src="`${item.icon}`" alt="">
         <h3>{{item.name}}</h3>
       </li>
     </nav>
     <nav class="nav">
-      <li v-for="(item,index) in headerNavData2" :key="index">
+      <li v-for="(item,index) in headerNavData2" :key="index" @click="goClassify">
         <img :src="`${item.icon}`" alt="">
         <h3>{{item.name}}</h3>
       </li>
@@ -43,6 +43,9 @@ export default {
         window.console.log(error);
       })
     },
+    goClassify(){
+      this.$router.replace('/classify');
+    }
   },
   created(){
     this.requestData();

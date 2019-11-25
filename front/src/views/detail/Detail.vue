@@ -28,7 +28,7 @@
             <RightInfoBox class="right_info" ref="rightInfo" :style="{height:infoHeight}">
                 <div class="kind" v-for="(item,index) in shopData" :key="index">
                     <h3>{{item.categoryName}}</h3>
-                    <div class="commodity" v-for="(commodity,index) in item.spuList" :key="index" @click="showShopInfo(commodity)">
+                    <div class="commodity" v-for="(commodity,index) in item.spuList" :key="index" @click="showShopInfoDetail(commodity)">
                         <img :src="`${commodity.bigImageUrl}`" alt="">
                         <div class="commodityDetail">
                             <h2>{{commodity.spuName}}</h2>
@@ -54,6 +54,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </RightInfoBox>
             </div>
@@ -103,8 +104,8 @@
         </div>
         <div class="totalPrices">
             <div class="addDispatchPrice iconfont" v-html="this.ShopInfo.shippingFeeTip" v-if="commodities.length == 0 ? true : false"></div>
-            <div class="totalPrices_">
-                <div class="Prices_" v-if="commodities.length == 0 ? false:true">
+            <div class="totalPrices_" v-if="commodities.length == 0 ? false:true">
+                <div class="Prices_">
                     <span class="totalCurrentPrice">￥{{totalPrices}}</span>
                     <span class="totalOriginPrice">￥{{totalOriginPrice}}</span>
                 </div>
@@ -133,6 +134,7 @@
         </div>
     </van-popup>
 
+    
   </div>
   
 </template>
@@ -155,7 +157,9 @@ export default {
             contentHeight:0,
             commodities:[],
             show: false,
-            ShopInfo:[]
+            ShopInfo:[],
+            shopInfoDetail:null,
+            shows:false
         }
     },
    components:{
@@ -320,8 +324,11 @@ export default {
             this.$store.commit('shoppingCart/setCartInfo',this.commodities);
             // window.console.log(this.$store);
         },
-        showShopInfo(commodity){
-            // window.console.log('点击了',commodity);
+        showShopInfoDetail(commodity){
+            this.shows = true;
+            window.console.log('点击了',commodity);
+            this.shopInfoDetail = commodity;
+            window.console.log(this.shopInfoDetail);
         }
     },
     created(){  
@@ -377,6 +384,7 @@ h1,h2,h3,h4,h5,h6{
         width: 100%;
         height: 80px;
         padding: 5px 0 0 10px;
+        margin-bottom: 20px;
         background: #2E2F3B;
         display: flex;
         .ShopInfo_picUrl{
@@ -448,6 +456,7 @@ h1,h2,h3,h4,h5,h6{
         .left_info{
             width: 80px;
             height: 100%;
+            top:0;
             background: #F5F5F5;
             .left_info_nav{
                 padding: 9px 10px 22px;
@@ -460,6 +469,7 @@ h1,h2,h3,h4,h5,h6{
             width: calc(100% - 80px);
             height: 100%;
             left: 80px;
+            top: 0;
             background: #fff;
             .kind{
                 width: 100%;
@@ -589,7 +599,7 @@ h1,h2,h3,h4,h5,h6{
         left: 0;
         bottom: 0;
         display: flex;
-        z-index: 9999;
+        z-index: 2008;
         .shoppingCart{
             width: 50px;
             height: 50px;
@@ -910,6 +920,7 @@ h1,h2,h3,h4,h5,h6{
             }
         }
     }
+    
 }
 
 </style>

@@ -91,7 +91,7 @@
 		},
 		computed: {
 			ids() {
-				return `/movie/detail/${this.value}/cinemas`;
+				return `/movie/detail/${this.value}/cinemas`;e
 			},
 		},
 		methods: {

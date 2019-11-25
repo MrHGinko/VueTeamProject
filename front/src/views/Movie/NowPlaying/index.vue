@@ -188,8 +188,8 @@ export default {
 .nowplay {
 	width: 100%;
 	position: absolute;
-	top: 40px;
-	bottom: 100px;
+	top: 80px;
+	bottom: 20px;
 	padding-bottom: 49px;
 	width: 100%;
 	h2 {
